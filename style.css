@@ -112,7 +112,11 @@ p {
 
 @media only screen and (max-width: 600px) {
     body {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: 1fr;
         text-align: center;
+    }
+
+    img {
+        width: 90%
     }
   }
