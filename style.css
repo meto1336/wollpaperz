@@ -1,0 +1,117 @@
+:root {
+    
+    --background-color: #212121;
+    --header-text-color: white;
+    --footer-text-color: white;
+    --button-text-color: #212121;
+}
+
+@font-face {
+    font-family: poppins;
+    src: url("fonts/Poppins-Medium.ttf");
+}
+
+@font-face {
+    font-family: pixeled;
+    src: url("fonts/Pixeled.ttf");
+}
+
+body {
+    font-family: 'poppins';
+    font-size: 12px;
+    display: grid;
+    text-align: center;
+    background-color: var(--background-color);
+    grid-template-columns: 1fr 700px 1fr;
+    grid-template-areas:
+    "h h h"
+    "i i i"
+    "f f f"
+}
+
+.images {
+    grid-area: i;
+    grid-column-start: 2;
+    grid-column-end: 2;
+    margin: 0;
+}
+
+img {
+    border: 1px white solid;
+}
+
+
+img:hover {
+    transition: 0.2s ease-in;
+    transform: scale(1.2);
+}
+
+
+
+header {
+    grid-area: h;
+    color: var(--header-text-color);
+    margin-bottom: 1.2rem;
+}
+
+span {
+    font-family: "pixeled";
+    font-size: 17px;
+    letter-spacing: 1px;
+    margin-left: 5px;
+    background-color: #4158D0;
+    background-image: linear-gradient(163deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+    background-clip: text; 
+    color: transparent;
+    
+    background-size: 300%;
+    background-position: -100%;  
+    
+    animation: animatedText 2s infinite alternate-reverse;
+}
+
+@keyframes animatedText{
+    to{
+      background-position: 100%; 
+    }
+  }
+
+button {
+    font-family: 'poppins';
+    margin-bottom: 2rem;
+    width: 20rem;
+    height: 3rem;
+    background: var(--button-text-color);
+    color: white;
+    border-radius: 2rem;
+    border: 1px white solid;
+    outline: none;
+    font-size: x-large;
+    
+}
+
+.memes {
+    font-size: 15px;
+}
+
+button:hover {
+    transition: 0.1s ease-in;
+    transform: scale(1.2);
+}
+
+footer {
+    margin-top: 3rem;
+    grid-area: f;
+    color: var(--footer-text-color);
+}
+
+p {
+    font-size: x-large;
+}
+
+@media only screen and (max-width: 600px) {
+    body {
+        grid-template-columns: repeat(3, 1fr);
+        text-align: center;
+    }
+  }
