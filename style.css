@@ -33,11 +33,12 @@ body {
     grid-area: i;
     grid-column-start: 2;
     grid-column-end: 2;
-    margin: 0;
 }
 
 img {
     border: 1px white solid;
+    margin: 0;
+    padding: 0;
 }
 
 
@@ -79,7 +80,7 @@ span {
 button {
     font-family: 'poppins';
     margin-bottom: 2rem;
-    width: 20rem;
+    width: 15rem;
     height: 3rem;
     background: var(--button-text-color);
     color: white;
@@ -100,7 +101,7 @@ button:hover {
 }
 
 footer {
-    margin-top: 3rem;
+    margin-top: 1rem;
     grid-area: f;
     color: var(--footer-text-color);
 }
