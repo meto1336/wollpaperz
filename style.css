@@ -79,20 +79,21 @@ span {
 
 button {
     font-family: 'poppins';
+    margin-top: 2rem;
     margin-bottom: 2rem;
-    width: 15rem;
-    height: 3rem;
+    width: 9rem;
+    height: 2rem;
     background: var(--button-text-color);
     color: white;
     border-radius: 2rem;
     border: 1px white solid;
     outline: none;
-    font-size: x-large;
+    font-size: large;
     
 }
 
 .memes {
-    font-size: 15px;
+    font-size: 10px;
 }
 
 button:hover {

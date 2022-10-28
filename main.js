@@ -10,16 +10,17 @@ let memes = {
 
     
     fetchMemes: function (){
-        fetch('https://programming-memes-images.p.rapidapi.com/v1/memes', options)
+        fetch('https://meme-api.herokuapp.com/gimme/9')
 	    .then(response => response.json())
 	    .then((data) => this.displayMemes(data))
     },
     
     displayMemes: function(data){
 
-        for(let i = 0; i < 9; i++){
-            const {image} = data[i]
-            document.querySelector('.img' + i).src = image
+        for(let i = 0; i < 10; i++){
+            const {url} = data.memes[i]
+            document.querySelector('.img' + i).src = url
+            
         }
     }
 
