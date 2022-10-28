@@ -10,7 +10,7 @@ let memes = {
 
     
     fetchMemes: function (){
-        fetch('https://meme-api.herokuapp.com/gimme/9')
+        fetch('https://meme-api.herokuapp.com/gimme/programmerhumor/9')
 	    .then(response => response.json())
 	    .then((data) => this.displayMemes(data))
     },
