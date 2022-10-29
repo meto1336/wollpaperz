@@ -62,8 +62,10 @@ span {
     margin-left: 5px;
     background-color: #4158D0;
     background-image: linear-gradient(to right, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+    -webkit-background-clip: text; 
     background-clip: text; 
     color: transparent;
+    
     
     background-size: 300%;
     background-position: -100%;  

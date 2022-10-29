@@ -1,11 +1,3 @@
-const options = {
-	method: 'GET',
-	headers: {
-		'X-RapidAPI-Key': '8bdc61bae8mshc7ff99c4061c91dp1c05f6jsn9d3fdc5000b5',
-		'X-RapidAPI-Host': 'programming-memes-images.p.rapidapi.com'
-	}
-};
-
 let memes = {
 
     
