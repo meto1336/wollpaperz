@@ -48,26 +48,30 @@ img:hover {
 }
 
 
-
-header {
+nav {
+    font-size: 1.5rem;
     grid-area: h;
-    color: var(--header-text-color);
-    margin-bottom: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: white;
+
 }
 
-span {
+.imageboard-header {
+
+
     font-family: "pixeled";
-    font-size: 17px;
-    letter-spacing: 1px;
-    margin-left: 5px;
+    font-size: 1.5rem;
+    letter-spacing: 0.2rem;
     background-color: #4158D0;
-    background-image: linear-gradient(to right, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+    background-image: linear-gradient(to right,  #0082fb 0%, #C850C0 100%);
     -webkit-background-clip: text; 
     background-clip: text; 
     color: transparent;
     
     
-    background-size: 300%;
+    background-size: 250%;
     background-position: -100%;  
     
     animation: animatedText 2s infinite alternate-reverse;
