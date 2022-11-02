@@ -36,7 +36,6 @@ body {
 }
 
 img {
-    border: 1px white solid;
     margin: 0;
     padding: 0;
 }
@@ -47,39 +46,59 @@ img:hover {
     transform: scale(1.2);
 }
 
+h1 {
+    margin: 1rem;
+}
 
 nav {
     font-size: 1.5rem;
     grid-area: h;
     display: flex;
-    align-items: center;
     justify-content: space-between;
     color: white;
 
+}
+
+a {
+    margin: 1rem;
+    text-decoration: none;
+    color: white;
+}
+
+ul {
+    margin: 1rem;
+    list-style: none;
+    display: flex;
 }
 
 .imageboard-header {
 
 
     font-family: "pixeled";
-    font-size: 1.5rem;
+    font-size: 1.1rem;
     letter-spacing: 0.2rem;
+    margin: 1rem;
     background-color: #4158D0;
-    background-image: linear-gradient(to right,  #0082fb 0%, #C850C0 100%);
-    -webkit-background-clip: text; 
+    background-image: linear-gradient(to right, rgb(0, 169, 247), violet, rgb(179, 2, 255), rgb(0, 169, 247));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    white-space: nowrap;
     background-clip: text; 
     color: transparent;
     
     
-    background-size: 250%;
+    background-size: 200%;
     background-position: -100%;  
     
-    animation: animatedText 2s infinite alternate-reverse;
+    animation: animatedText 2s linear infinite;
 }
 
 @keyframes animatedText{
-    to{
-      background-position: 100%; 
+    from {
+      background-position: 0% center; 
+    }
+    to {
+        background-position: -200% center;
     }
   }
 
