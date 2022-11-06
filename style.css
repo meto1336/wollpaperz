@@ -22,29 +22,82 @@ body {
     display: grid;
     text-align: center;
     background-color: var(--background-color);
-    grid-template-columns: 1fr 700px 1fr;
+    grid-template-columns: 1fr 665px 1fr;
     grid-template-areas:
     "h h h"
     "i i i"
     "f f f"
 }
 
-.images {
+.memes {
     grid-area: i;
     grid-column-start: 2;
     grid-column-end: 2;
 }
 
-img {
+.img0 {
+    float: left;
+    background: url(''); 
+    height: 220px;
+    width: 220px;
     border: 1px white solid;
-    margin: 0;
-    padding: 0;
 }
 
+.img1 { 
+    float: left;
+    background: url(''); 
+    height: 220px;
+    width: 220px;
+    border: 1px white solid;
 
-img:hover {
-    transition: 0.2s ease-in;
-    transform: scale(1.2);
+}.img2 {
+    float: left;
+    background: url(''); 
+    height: 220px;
+    width: 220px;
+    border: 1px white solid;
+}
+.img3 {
+    float: left;
+    background: url(''); 
+    height: 220px;
+    width: 220px;
+    border: 1px white solid;
+}
+.img4 {
+    float: left;
+    background: url(''); 
+    height: 220px;
+    width: 220px;
+    border: 1px white solid;
+}
+.img5 {
+    float: left;
+    background: url(''); 
+    height: 220px;
+    width: 220px;
+    border: 1px white solid;
+}
+.img6 {
+    float: left;
+    background: url(''); 
+    height: 220px;
+    width: 220px;
+    border: 1px white solid;
+}
+.img7 {
+    float: left;
+    background: url(''); 
+    height: 220px;
+    width: 220px;
+    border: 1px white solid;
+}
+.img8 {
+    float: left;
+    background: url(''); 
+    height: 220px;
+    width: 220px;
+    border: 1px white solid;
 }
 
 
@@ -61,7 +114,7 @@ span {
     letter-spacing: 1px;
     margin-left: 5px;
     background-color: #4158D0;
-    background-image: linear-gradient(to right, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+    background: linear-gradient(to right, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
     -webkit-background-clip: text; 
     background-clip: text; 
     color: transparent;
@@ -119,7 +172,11 @@ p {
         text-align: center;
     }
 
-    img {
-        width: 80%
+    .memes {
+        display: flex;
+        justify-content: center;
+        flex-flow: wrap;
+        width: 100%;
     }
+
   }
