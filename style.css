@@ -11,137 +11,71 @@
     src: url("fonts/Poppins-Medium.ttf");
 }
 
-@font-face {
-    font-family: pixeled;
-    src: url("fonts/Pixeled.ttf");
-}
+
+
 
 body {
+    margin-top: 0;
     font-family: 'poppins';
-    font-size: 12px;
-    display: grid;
     text-align: center;
-    background-color: var(--background-color);
-    grid-template-columns: 1fr 665px 1fr;
-    grid-template-areas:
-    "h h h"
-    "i i i"
-    "f f f"
+    background: white;
 }
 
-.memes {
-    grid-area: i;
-    grid-column-start: 2;
-    grid-column-end: 2;
-}
 
-img {
-    border: 1px white solid;
-    margin: 0;
-    padding: 0;
-}
-
-.img1 { 
-    float: left;
-    background: url(''); 
-    height: 220px;
-    width: 220px;
-    border: 1px white solid;
-
-}.img2 {
-    float: left;
-    background: url(''); 
-    height: 220px;
-    width: 220px;
-    border: 1px white solid;
-}
-.img3 {
-    float: left;
-    background: url(''); 
-    height: 220px;
-    width: 220px;
-    border: 1px white solid;
-}
-.img4 {
-    float: left;
-    background: url(''); 
-    height: 220px;
-    width: 220px;
-    border: 1px white solid;
-}
-.img5 {
-    float: left;
-    background: url(''); 
-    height: 220px;
-    width: 220px;
-    border: 1px white solid;
-}
-.img6 {
-    float: left;
-    background: url(''); 
-    height: 220px;
-    width: 220px;
-    border: 1px white solid;
-}
-.img7 {
-    float: left;
-    background: url(''); 
-    height: 220px;
-    width: 220px;
-    border: 1px white solid;
-}
-.img8 {
-    float: left;
-    background: url(''); 
-    height: 220px;
-    width: 220px;
-    border: 1px white solid;
-}
-
-h1 {
-    margin: 1rem;
-}
-
-nav {
-    font-size: 1.5rem;
-    grid-area: h;
+.navbar {
     display: flex;
     justify-content: space-between;
-    color: white;
-
+    align-items: center;
+    background: black;
 }
 
-a {
-    margin: 1rem;
+
+
+
+.navbar-header a{
+
+    font-family: "poppins";
+    color: white;
     text-decoration: none;
-    color: white;
+    font-size: 1.7rem;
+    
 }
 
-ul {
-    margin: 1rem;
-    list-style: none;
+.navbar-links ul {
+    padding: 0;
+    margin: 0;
     display: flex;
 }
 
-.imageboard-header {
-
-
-    font-family: "pixeled";
-    font-size: 1.1rem;
-    letter-spacing: 0.2rem;
-    margin: 1rem;
-    background-color: #4158D0;
-    background-image: linear-gradient(to right, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
-    -webkit-background-clip: text; 
-    background-clip: text; 
-    color: transparent;
-    
-    
-    background-size: 200%;
-    background-position: -100%;  
-    
-    animation: animatedText 2s linear infinite;
+.navbar-links li {
+    list-style: none;
 }
+
+.navbar-links li a {
+    text-decoration: none;
+    color: white;
+    padding: 1rem;
+    display: block;
+}
+
+.toggle-button {
+    position: absolute;
+    top: .75rem;
+    right: 1rem;
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+}
+
+.toggle-button .bar {
+    height: 3px;
+    width: 100%;
+    background-color: white;
+    border-radius: 10px;
+}
+
 
 @keyframes animatedText{
     from {
@@ -152,51 +86,17 @@ ul {
     }
   }
 
-button {
-    font-family: 'poppins';
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-    width: 9rem;
-    height: 2rem;
-    background: var(--button-text-color);
-    color: white;
-    border-radius: 2rem;
-    border: 1px white solid;
-    outline: none;
-    font-size: large;
-    
-}
 
-.memes {
-    font-size: 10px;
-}
 
-button:hover {
-    transition: 0.1s ease-in;
-    transform: scale(1.2);
-}
-
-footer {
-    margin-top: 1rem;
-    grid-area: f;
-    color: var(--footer-text-color);
-}
-
-p {
-    font-size: x-large;
-}
 
 @media only screen and (max-width: 600px) {
-    body {
-        grid-template-columns: 1fr;
-        text-align: center;
+    
+    .toggle-button {
+        display: flex;
     }
 
-    .memes {
-        display: flex;
-        justify-content: center;
-        flex-flow: wrap;
-        width: 100%;
+    .navbar-links {
+        display: none;
     }
 
   }
