@@ -34,15 +34,15 @@ body {
     margin-left: 1rem;
     font-family: 'Rubik Bubbles', cursive;
 
-    background-image: linear-gradient(to right, #00F260, #f79d00, #0575E6, #64f38c);
+    background-image: linear-gradient(43deg, rgb(211, 3, 211), rgb(0, 110, 255));
     -webkit-background-clip: text; 
     background-clip: text; 
     color: transparent;
   
-    background-size: 300%;
-    background-position: -100%;  
+    background-size: 350%;
+    background-position: -200%;  
   
-    animation: animatedText 2s infinite;
+    animation: animatedText 3s infinite;
 
 }
 
@@ -104,6 +104,10 @@ body {
 
 @media only screen and (max-width: 600px) {
     
+    .navbar {
+        height: 3rem;
+    }
+
     .toggle-button {
         display: flex;
     }
@@ -111,6 +115,7 @@ body {
     .navbar-links {
         display: none;
         width: 100%;
+        background: #1B1B1B;
     }
 
     .navbar {
