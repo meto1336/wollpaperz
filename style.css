@@ -80,7 +80,7 @@ body {
 
 .toggle-button {
     position: absolute;
-    top: .75rem;
+    top: .5rem;
     right: 1rem;
     display: none;
     flex-direction: column;
@@ -109,10 +109,9 @@ body {
 
 
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 700px) {
     
     .navbar {
-        height: 3rem;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -126,7 +125,6 @@ body {
 
     .navbar-links {
         display: none;
-        height: 0rem;
         width: 100%;
         background: #1B1B1B;
     }
