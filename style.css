@@ -29,7 +29,12 @@ body {
     background: #1B1B1B;
 }
 
+img {
 
+    margin: 1rem;
+    outline: none;
+
+}
 
 
 .navbar-header a{
