@@ -6,18 +6,19 @@ const options = {
 	}
 };
 
-let memes = {
+let  = {
 
     
     fetchMemes: function (){
-        fetch('https://reddit34.p.rapidapi.com/getTopPostsBySubreddit?subreddit=arabfunny&time=hour', options)
-	    .then(response => response.json())
-	    .then((data) => this.displayMemes(data))
+        fetch('https://pexelsdimasv1.p.rapidapi.com/v1/search?query=landscapes&locale=en-US&per_page=12&page=1', options)
+        .then(response => response.json())
+        .then(response => console.log(response))
+        .catch(err => console.error(err));
     },
     
     displayMemes: function(data){
 
-        for(let i = 0; i < 9; i++){
+        for(let i = 0; i <= 11; i++){
             //const {url} = data.memes[i]
             //document.querySelector('.img' + i).style.background = url
             

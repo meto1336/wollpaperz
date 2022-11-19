@@ -14,13 +14,21 @@
 }
 
 body {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
     font-family: 'Poppins', sans-serif;
     text-align: center;
-    background: #333333;
+    background: #1B1B1B;
 }
 
+.images {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    justify-items: center;
+    margin: 1rem;
+
+}
 
 .navbar {
     display: flex;
@@ -30,17 +38,17 @@ body {
 }
 
 img {
-
-    margin: 1rem;
+    margin-top: 0.3rem;
     outline: none;
-
+    max-width: 97%;
+    max-height: 97%;
 }
 
 
 .navbar-header a{
     color: white;
     text-decoration: none;
-    font-size: 2rem;
+    font-size: 1.5rem;
     margin-left: 1rem;
     font-family: 'silkscreen';
 
@@ -73,29 +81,29 @@ img {
 
 .navbar-links li a {
     text-decoration: none;
-    font-size: 17pt;
+    font-size: 13pt;
     color: white;
     padding: 1rem;
     display: block;
 }
 
 .navbar-links li:hover {
-    background: #555
+    background: rgb(0, 174, 255)
 }
 
 .toggle-button {
     position: absolute;
-    top: .5rem;
+    top: .43rem;
     right: 1rem;
     display: none;
     flex-direction: column;
     justify-content: space-between;
-    width: 30px;
-    height: 21px;
+    width: 25px;
+    height: 14px;
 }
 
 .toggle-button .bar {
-    height: 3px;
+    height: 2px;
     width: 100%;
     background-color: white;
     border-radius: 10px;
@@ -111,7 +119,9 @@ img {
     }
   }
 
-
+footer {
+    color: white;
+}
 
 
 @media only screen and (max-width: 700px) {
@@ -122,7 +132,16 @@ img {
         align-items: center;
     }
 
-    
+    .images {
+        display: grid;
+        grid-template-columns: 1fr;
+        justify-items: center
+                ;
+    }
+
+    img {
+        width: 15rem;
+    }
 
     .toggle-button {
         display: flex;
@@ -131,7 +150,7 @@ img {
     .navbar-links {
         display: none;
         width: 100%;
-        background: #1B1B1B;
+        background: rgb(49, 52, 50);
     }
 
     .navbar {
