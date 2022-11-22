@@ -24,9 +24,12 @@ body {
 
 .images {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     justify-items: center;
-    margin: 1rem;
+    margin-left: 5rem;
+    margin-right: 5rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 
 }
 
@@ -38,17 +41,21 @@ body {
 }
 
 img {
-    margin-top: 0.3rem;
-    outline: none;
     max-width: 97%;
     max-height: 97%;
+    border: solid white 2px;
 }
 
+
+img:hover {
+    transform: scale(1.1);
+    transition: 0.1s ease-in;
+}
 
 .navbar-header a{
     color: white;
     text-decoration: none;
-    font-size: 1.5rem;
+    font-size: 2rem;
     margin-left: 1rem;
     font-family: 'silkscreen';
 
@@ -124,7 +131,7 @@ footer {
 }
 
 
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 800px) {
     
     .navbar {
         display: flex;
@@ -140,7 +147,8 @@ footer {
     }
 
     img {
-        width: 15rem;
+        width: 30rem;
+        height: 20rem;
     }
 
     .toggle-button {
@@ -168,7 +176,7 @@ footer {
     }
 
     .navbar-links a {
-        padding: .5rem 1rem;
+        padding:5rem 1rem;
     }
 
     .navbar-links.active {
