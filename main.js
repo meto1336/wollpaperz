@@ -11,19 +11,19 @@ var forwardButton = document.getElementsByClassName('forward')
 var backwardsButton = document.getElementsByClassName('backwards')
 
 
-var page = 0;
+var page = 1;
 
 url = 'https:exelsdimasv1.p.rapidapi.com/v1/search?query=landscapes&locale=en-US&per_page=1&page=' 
 
 function increment() {
 
-    page++
-    url = url + page
+    page = page += 1
+    url = url + '' + page
     console.log(url)
     return url
 }
 
-console.log(new_url = increment())
+console.log(increment())
 
 
 function fetchImages(){
