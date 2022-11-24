@@ -24,14 +24,13 @@ body {
 
 .image-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    justify-items: center;
-    margin-left: 5rem;
-    margin-right: 5rem;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-
+    gap: 10px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(5, 250px);
+    grid-auto-flow: row dense;
+    margin: 3rem;
 }
+
 
 .backwardsButton:disabled {
     background: #F5F5F5;
@@ -48,17 +47,32 @@ body {
 
 .image {
     border: solid 2px white;
-    margin: 1rem;
     cursor: pointer;
     overflow: hidden;
 }
 
+.image:first-child {
+    grid-row: span 1;
+}
+
+.image:nth-child(2) {
+    grid-row: span 2
+}
+
+.image:nth-child(6),
+.image:nth-child(8) {
+    grid-row: span 2;
+}
+
 img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 img:hover {
     transform: scale(1.1);
-    transition: 0.1s ease-in;
+    transition: 0.2s ease-in;
 }
 
 
@@ -147,16 +161,13 @@ footer {
         align-items: center;
     }
 
-    .images {
+    .image-container {
         display: grid;
         grid-template-columns: 1fr;
-        justify-items: center
-                ;
+        justify-items: center;
     }
 
     img {
-        width: 30rem;
-        height: 20rem;
     }
 
     .toggle-button {

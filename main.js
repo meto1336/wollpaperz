@@ -19,8 +19,8 @@ if(page < 2){
     backwardsButton.setAttribute('disabled', true);
 }
 
-var url = 'https:exelsdimasv1.p.rapidapi.com/v1/search?query=landscapes&per_page=12&page=' + page
-//var url = 'https://pexelsdimasv1.p.rapidapi.com/v1/curated?per_page=9&page=' + page
+//var url = 'https:exelsdimasv1.p.rapidapi.com/v1/search?query=landscapes&per_page=12&page=' + page
+var url = 'https://pexelsdimasv1.p.rapidapi.com/v1/curated?per_page=12&page=' + page
 
  forwardButton.addEventListener('click', (e)=> {
     
@@ -52,8 +52,7 @@ var url = 'https:exelsdimasv1.p.rapidapi.com/v1/search?query=landscapes&per_page
 function fetchImages(){
         fetch(url, options)
         .then(response => response.json())
-        .then(response => console.log(response))
-        //.then(data => this.displayImages(data))
+        .then(data => this.displayImages(data))
 }
     
 
@@ -62,7 +61,6 @@ function displayImages(data){
         for(let i = 0; i < 10; i++){
             const image = data.photos[i].src.original
             img[i].src = image
-            console.log(image)
         }
         
 }
