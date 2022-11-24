@@ -7,37 +7,62 @@ const options = {
 	}
 };
 
-var forwardButton = document.getElementsByClassName('forward')
-var backwardsButton = document.getElementsByClassName('backwards')
+var forwardButton = document.querySelector('.forward');
+var backwardsButton = document.querySelector('.backwards')
+var img = document.querySelectorAll('img')
 
 
 var page = 1;
 
-url = 'https:exelsdimasv1.p.rapidapi.com/v1/search?query=landscapes&locale=en-US&per_page=1&page=' 
 
-function increment() {
-
-    page = page += 1
-    url = url + '' + page
-    console.log(url)
-    return url
+if(page < 2){
+    backwardsButton.setAttribute('disabled', true);
 }
 
-console.log(increment())
+var url = 'https:exelsdimasv1.p.rapidapi.com/v1/search?query=landscapes&per_page=12&page=' + page
+//var url = 'https://pexelsdimasv1.p.rapidapi.com/v1/curated?per_page=9&page=' + page
+
+ forwardButton.addEventListener('click', (e)=> {
+    
+        url = url.slice(0, -1)
+        page = page += 1
+        url = url + page
+        fetchImages()
+        backwardsButton.removeAttribute('disabled')
+        
+ })
+
+ backwardsButton.addEventListener('click', (e)=> {
+
+        url = url.slice(0, -1)
+        page = page -= 1
+        url = url + page
+        fetchImages()
+
+        if(page < 2)    {
+        backwardsButton.setAttribute('disabled', true);
+    }
+
+        
+
+})
+
 
 
 function fetchImages(){
-        fetch(new_url, options)
+        fetch(url, options)
         .then(response => response.json())
-        .then(data => this.displayImages(data))
+        .then(response => console.log(response))
+        //.then(data => this.displayImages(data))
 }
-
     
+
 function displayImages(data){
 
-        for(let i = 0; i < 13; i++){
+        for(let i = 0; i < 10; i++){
             const image = data.photos[i].src.original
-            document.querySelector('.img' + i).src = image
+            img[i].src = image
+            console.log(image)
         }
         
 }
