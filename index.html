@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Rubik+Bubbles&family=VT323&display=swap" rel="stylesheet">
     
-    <title>imageboard</title>
+    <title>Discover Wallpaperz</title>
 </head>
 <body>
 
@@ -17,7 +17,6 @@
     <nav class="navbar">
         <div class="navbar-header"><a href="index.html">wallpaperz</a>
 
-            <!-- <input type="search" name="" id=""> -->
             <a href="#" class="toggle-button">
                 <span class="bar"></span>
                 <span class="bar"></span>
@@ -25,10 +24,14 @@
            </a>
         </div>
         
+        <div class="search-input">
+            <input type="search" name="" id="" placeholder="Search for images...">
+        </div>
+
         <div class="navbar-links">
             <ul>
-                <li><a href="">Sign Up</a></li>
-                <li><a href="">Login</a></li>
+                <li><a href="#">Sign Up</a></li>
+                <li><a href="#">Login</a></li>
             </ul>
         </div>
     </nav>
@@ -61,11 +64,17 @@
             <img src="" alt="" >
         </div>
     </div>
-    <button class="backwards"><--------</button>
-    <button class="forward">--------></button>
+    <div class="page">
+        <span class="page_amount">Page 1</span>
+        <button class="backwards">Previous Page</button>
+        <button class="forward">Next Page</button>
+    </div>
     <footer>
-        <span>Made by Dominik</span>
-        <p>API provided by <a href="https://www.pexels.com/">Pexels.com</a></p>
+        <span>
+            Made by Dominik
+            <br>
+            API provided by <a href="https://www.pexels.com/">Pexels.com</a>
+        </span>
     </footer>
 
 </body>
