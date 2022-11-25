@@ -11,6 +11,7 @@ var forwardButton = document.querySelector('.forward');
 var backwardsButton = document.querySelector('.backwards')
 var img = document.querySelectorAll('img')
 var search_input = document.querySelector('input')
+var page_number = document.querySelector('.page_number')
 
 var page = 1;
 
@@ -25,6 +26,7 @@ var url = 'https://pexelsdimasv1.p.rapidapi.com/v1/curated?per_page=12&page=' + 
     
         url = url.slice(0, -1)
         page = page += 1
+        page_number.innerHTML = 'Page ' + page
         url = url + page
         fetchImages(url)
         backwardsButton.removeAttribute('disabled')
@@ -35,6 +37,7 @@ var url = 'https://pexelsdimasv1.p.rapidapi.com/v1/curated?per_page=12&page=' + 
 
         url = url.slice(0, -1)
         page = page -= 1
+        page_number.innerHTML = 'Page ' + page
         url = url + page
         fetchImages(url)
 
@@ -49,6 +52,8 @@ var url = 'https://pexelsdimasv1.p.rapidapi.com/v1/curated?per_page=12&page=' + 
 search_input.addEventListener('keypress', (e)=> {
   
     if(e.key === "Enter"){
+        page = 1
+        page_number.innerHTML = 'Page ' + page
         searchImages()
         e.preventDefault()
     }
@@ -57,7 +62,7 @@ search_input.addEventListener('keypress', (e)=> {
 
 
 function searchImages(){
-
+    
     this.url = 'https:exelsdimasv1.p.rapidapi.com/v1/search?query='+ search_input.value +'&per_page=12&page=' + page
     this.fetchImages(url)
 

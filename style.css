@@ -135,7 +135,7 @@ img:hover {
 }
 
 .navbar-links li:hover {
-    background: rgb(155, 155, 155)
+    background: rgb(214, 214, 214)
 }
 
 .toggle-button {
@@ -155,8 +155,6 @@ img:hover {
     background-color: rgb(0, 0, 0);
     border-radius: 10px;
 }
-
-
 
 
 footer {
