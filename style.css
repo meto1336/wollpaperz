@@ -6,6 +6,44 @@
     --button-text-color: #212121;
 }
 
+.loading {
+    visibility: hidden;
+    position: absolute;
+    width: 80px;
+    height: 80px;
+  }
+
+.loading.display {
+    visibility: visible;
+}
+
+  .loading div {
+    position: absolute;
+    width: 64px;
+    height: 64px;
+    border: 8px solid rgb(0, 0, 0);
+    border-radius: 50%;
+    animation: loading 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    border-color: rgb(0, 0, 0) transparent transparent transparent;
+  }
+  .loading div:nth-child(1) {
+    animation-delay: -0.45s;
+  }
+  .loading div:nth-child(2) {
+    animation-delay: -0.3s;
+  }
+  .loading div:nth-child(3) {
+    animation-delay: -0.15s;
+  }
+  @keyframes loading {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
 
 
 @font-face {
@@ -25,27 +63,42 @@ body {
 .image-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    /* grid-auto-rows: 150px; */
     grid-template-rows: repeat(4, 250px);
-    grid-auto-flow: row dense;
+    /* grid-auto-rows: row dense; */
     margin: 3rem;
 }
 
 .search-input input{
 
     width: 40rem;
-    height: 6vh;
+    height: 7vh;
     font-size: large;
-    border-radius: 10px;
-    border: 1px solid rgb(81, 81, 81);
+    border-radius: 20px;
+    border: 2px solid rgb(81, 81, 81);
     outline: none;
     padding-left: 1rem;
 
 }
 
+.previous_page {
 
-.backwardsButton:disabled {
-    background: #F5F5F5;
-    color : #C3C3C3;
+    background: black;
+    color: white;
+    font-size: x-large;
+    padding-right: 1rem;
+    border: none;
+    border-radius: 20px;
+
+
+}
+
+.next_page {
+    background: black;
+    color: white;
+    font-size: x-large;
+    border: none;
+    border-radius: 20px;
 }
 
 .navbar {
@@ -56,10 +109,12 @@ body {
 
 
 .image {
-    border: solid 2px white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
     overflow: hidden;
-    margin: 0.8rem;
+    margin: 1rem;
 }
 
 .image:first-child {
@@ -67,7 +122,7 @@ body {
 }
 
 .image:nth-child(2) {
-    grid-row: span 2
+    grid-row: span 2;
 }
 
 .image:nth-child(6),
@@ -162,12 +217,10 @@ footer {
 }
 
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 810px) {
     
     .navbar {
         display: flex;
-        justify-content: center;
-        align-items: center;
     }
 
     .image-container {
@@ -176,9 +229,11 @@ footer {
         justify-items: center;
     }
 
-    img {
+    .search-input input {
+        margin-top: 2rem;
+        width: 120%;
     }
-
+    
     .toggle-button {
         display: flex;
     }
