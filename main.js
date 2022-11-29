@@ -9,16 +9,12 @@ const options = {
 
 var forwardButton = document.querySelector('.next_page');
 var backwardsButton = document.querySelector('.previous_page')
-var img = document.querySelectorAll('img')
 var image_container = document.querySelector('.image-container')
 var search_input = document.querySelector('input')
 var page_number = document.querySelector('.page_number')
 var loader = document.querySelectorAll('.loading')
-var popup_image = document.getElementsByClassName('"popup-image')
-var page_div = document.getElementById('page')
-var navbar = document.getElementsByTagName('nav')
-
-
+var popup_image = document.getElementsByClassName('popup-image')
+var no_pics = document.getElementById('no_pics')
 
 
 function displayLoading(){
@@ -29,14 +25,10 @@ function displayLoading(){
 
 }
 
-for (let index = 0; index < img.length; index++) {
-    img[index].addEventListener("load", function loaded(){
+// for (let index = 0; index < img.length; index++) {
+      
+// }
 
-        img[index].style.opacity = 1
-        loader[index].classList.remove("display");
-
-    });   
-}
 
 
 
@@ -104,9 +96,6 @@ function searchImages(){
     
     this.url = 'https:exelsdimasv1.p.rapidapi.com/v1/search?query='+ search_input.value +'&per_page=12&page=' + page
     
-    if(document.contains(document.getElementById('no_pics'))){
-        document.getElementById('no_pics').remove()
-    }
 
     while (image_container.firstChild) {
         image_container.removeChild(image_container.lastChild);
@@ -128,40 +117,38 @@ function displayImages(data){
 
 
         if(data.photos.length <= 0){
-            var nopics_div = document.createElement("div")
-            nopics_div.id = "no_pics"
-            nopics_div.innerText = "No Pictures found"
-            document.body.appendChild(nopics_div);
+            no_pics.style.visibility = "visible"
 
         } else {
             
-            image_container.append()
-           
-
+        
             for(let index = 0; index < data.photos.length; index++){
 
-                console.log(data.photos[index].src.original)
+                //console.log(data.photos[index].src.original)
     
                 var image_div = document.createElement("div");
                 var image_el = document.createElement("img")
                 image_div.className = "image";
-                document.body.appendChild(image_container);
                 image_container.appendChild(image_div)
                 image_div.appendChild(image_el)
                 image_el.src = data.photos[index].src.original
+                image_el.style.opacity = 0
                 
                 
             }
         }
 
-
-       
-
-        
-
     
         
 }
+
+document.querySelector('img')[0].addEventListener("load", function loaded(){
+
+
+    img[0].style.opacity = 1
+    // loader[index].classList.remove("display");
+
+}); 
 
 window.onload = (event) => {
     fetchImages()

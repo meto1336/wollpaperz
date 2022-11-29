@@ -88,7 +88,8 @@ body {
     font-size: xx-large;
     border: none;
     border-radius: 20px;
-    width: 5rem;
+    width: 7rem;
+    margin-right: 0.5rem;
 
 
 }
@@ -98,13 +99,23 @@ body {
     transition: 0.1s ease-in;
 }
 
+#no_pics {
+    position: absolute;
+    visibility: hidden;
+    font-size: xx-large;
+    width: 100%;
+    text-align: center;
+    top: 30%;
+}
+
 .next_page {
     background: black;
     color: white;
     font-size: xx-large;
     border: none;
     border-radius: 20px;
-    width: 5rem;
+    margin-left: 0.5rem;
+    width: 7rem;
 }
 
 .page_number {
@@ -184,7 +195,7 @@ img:hover {
 .navbar-header a{
     color: rgb(0, 0, 0);
     text-decoration: none;
-    font-size: 2rem;
+    font-size: 3rem;
     margin-left: 4rem;
     font-family: 'silkscreen';
     /* background-image: linear-gradient(90deg, rgb(211, 3, 211), rgb(0, 110, 255), rgb(255, 0, 21));
@@ -221,7 +232,7 @@ img:hover {
 
 .navbar-links li a {
     text-decoration: none;
-    font-size: 13pt;
+    font-size: 17pt;
     color: rgb(0, 0, 0);
     padding: 1rem;
     display: block;
