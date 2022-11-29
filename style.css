@@ -72,7 +72,7 @@ body {
 .search-input input{
 
     width: 40rem;
-    height: 5vh;
+    height: 7vh;
     font-size: x-large;
     border-radius: 20px;
     border: 2px solid rgb(81, 81, 81);
@@ -166,28 +166,42 @@ img {
     object-fit: cover;
 }
 
+img.active {
+    animation: opacity_change 1s;
+}
+
+@keyframes opacity_change { 
+    0% {
+      opacity: 0;
+    }
+  
+    100% {
+      opacity: 1;
+    }
+}
+
 img:hover {
     transform: scale(1.1);
     transition: 0.2s ease-in;
 }
 
-.popup-image {
-    display: none;
+#popup-image {
+    visibility: hidden;
     position: fixed;
-    background: rgba(0, 0, 0, 0.9);
+    background: rgba(0, 0, 0, 0.97);
     height: 100%;
     width: 100%;
     top: 0;
     left: 0;
 }
 
-.popup-image img {
+#popup-image img {
     position: absolute;
-    top: 40%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 70%;
-    height: 75%;
+    height: 90%;
 }
 
 
@@ -195,28 +209,11 @@ img:hover {
 .navbar-header a{
     color: rgb(0, 0, 0);
     text-decoration: none;
-    font-size: 3rem;
+    font-size: 2.5rem;
     margin-left: 4rem;
     font-family: 'silkscreen';
-    /* background-image: linear-gradient(90deg, rgb(211, 3, 211), rgb(0, 110, 255), rgb(255, 0, 21));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent; 
-    background-clip: text; 
-    color: transparent;
-  
-    background-size: 400%;
-  
-    animation: animatedText 5s linear infinite; */
 
 }
-/* @keyframes animatedText{
-    from {
-      background-position: 0% center; 
-    }
-    to {
-        background-position: -400% center;
-    }
-} */
 
 .navbar-links ul {
     padding: 0;
@@ -232,7 +229,7 @@ img:hover {
 
 .navbar-links li a {
     text-decoration: none;
-    font-size: 17pt;
+    font-size: 13pt;
     color: rgb(0, 0, 0);
     padding: 1rem;
     display: block;

@@ -12,9 +12,12 @@ var backwardsButton = document.querySelector('.previous_page')
 var image_container = document.querySelector('.image-container')
 var search_input = document.querySelector('input')
 var page_number = document.querySelector('.page_number')
+var img_tag = document.getElementsByTagName('img')
 var loader = document.querySelectorAll('.loading')
-var popup_image = document.getElementsByClassName('popup-image')
+var popup_image = document.getElementById('popup-image')
 var no_pics = document.getElementById('no_pics')
+var close_image_button = document.getElementById('close_image')
+var image_div_container = document.getElementsByClassName('image')
 
 
 function displayLoading(){
@@ -26,7 +29,7 @@ function displayLoading(){
 }
 
 // for (let index = 0; index < img.length; index++) {
-      
+
 // }
 
 
@@ -48,7 +51,7 @@ var url = 'https:pexelsdimasv1.p.rapidapi.com/v1/curated?per_page=12&page=' + pa
 // })
 
  forwardButton.addEventListener('click', (e)=> {
-    
+
         url = url.slice(0, -1)
         page = page += 1
         page_number.innerHTML = 'Page ' + page
@@ -58,8 +61,8 @@ var url = 'https:pexelsdimasv1.p.rapidapi.com/v1/curated?per_page=12&page=' + pa
             image_container.removeChild(image_container.lastChild);
           }
         fetchImages(url)
-        
-        
+
+
  })
 
  backwardsButton.addEventListener('click', (e)=> {
@@ -76,12 +79,12 @@ var url = 'https:pexelsdimasv1.p.rapidapi.com/v1/curated?per_page=12&page=' + pa
         if(page < 2)    {
         backwardsButton.setAttribute('disabled', true);
         }
-        
+
 
 })
 
 search_input.addEventListener('keypress', (e)=> {
-  
+
     if(e.key === "Enter"){
         page = 1
         page_number.innerHTML = 'Page ' + page
@@ -93,9 +96,9 @@ search_input.addEventListener('keypress', (e)=> {
 
 
 function searchImages(){
-    
+
     this.url = 'https:exelsdimasv1.p.rapidapi.com/v1/search?query='+ search_input.value +'&per_page=12&page=' + page
-    
+
 
     while (image_container.firstChild) {
         image_container.removeChild(image_container.lastChild);
@@ -111,7 +114,7 @@ function fetchImages() {
        .then(res => res.json())
        .then(data => this.displayImages(data))
 
-    
+
     }
 function displayImages(data){
 
@@ -120,38 +123,50 @@ function displayImages(data){
             no_pics.style.visibility = "visible"
 
         } else {
-            
-        
+
+
             for(let index = 0; index < data.photos.length; index++){
 
-                //console.log(data.photos[index].src.original)
-    
+
                 var image_div = document.createElement("div");
                 var image_el = document.createElement("img")
                 image_div.className = "image";
                 image_container.appendChild(image_div)
                 image_div.appendChild(image_el)
                 image_el.src = data.photos[index].src.original
-                image_el.style.opacity = 0
-                
-                
+                img_tag[index].style.opacity = 0
+
+                img_tag[index].addEventListener('load', function(){
+                    img_tag[index].classList.add('active')
+                    img_tag[index].style.opacity = 1
+                })
+
+                img_tag[index].addEventListener('click', function(){
+                    popup_image.appendChild(img_tag[index])
+                    popup_image.style.visibility = "visible"
+                    document.body.style.overflow = "hidden"
+                })
+                close_image_button.addEventListener('click', function(){
+                    image_div_container[index].appendChild(img_tag[index])
+                    popup_image.style.visibility = "hidden"
+                    document.body.style.overflow = "visible"
+                })
             }
+
+            
+
+            
         }
 
-    
-        
+
+
 }
 
-document.querySelector('img')[0].addEventListener("load", function loaded(){
 
 
-    img[0].style.opacity = 1
-    // loader[index].classList.remove("display");
 
-}); 
 
 window.onload = (event) => {
     fetchImages()
     search_input.value = ''
-
 }
