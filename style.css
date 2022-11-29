@@ -62,9 +62,9 @@ body {
 
 .image-container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     /* grid-auto-rows: 150px; */
-    grid-template-rows: repeat(4, 250px);
+    grid-template-rows: repeat(4, 300px);
     /* grid-auto-rows: row dense; */
     margin: 3rem;
 }
@@ -72,8 +72,8 @@ body {
 .search-input input{
 
     width: 40rem;
-    height: 7vh;
-    font-size: large;
+    height: 5vh;
+    font-size: x-large;
     border-radius: 20px;
     border: 2px solid rgb(81, 81, 81);
     outline: none;
@@ -85,20 +85,39 @@ body {
 
     background: black;
     color: white;
-    font-size: x-large;
-    padding-right: 1rem;
+    font-size: xx-large;
     border: none;
     border-radius: 20px;
+    width: 5rem;
 
 
+}
+
+.previous_page:hover {
+    transform: scale(1.1);
+    transition: 0.1s ease-in;
 }
 
 .next_page {
     background: black;
     color: white;
-    font-size: x-large;
+    font-size: xx-large;
     border: none;
     border-radius: 20px;
+    width: 5rem;
+}
+
+.page_number {
+    font-size: x-large;
+}
+
+footer {
+    font-size: x-large;
+}
+
+.next_page:hover {
+    transform: scale(1.1);
+    transition: 0.1s ease-in;
 }
 
 .navbar {
@@ -114,11 +133,11 @@ body {
     align-items: center;
     cursor: pointer;
     overflow: hidden;
-    margin: 1rem;
+    margin: 0.5rem;
 }
 
 .image:first-child {
-    grid-row: span 1;
+    grid-row: span 2;
 }
 
 .image:nth-child(2) {
@@ -139,6 +158,25 @@ img {
 img:hover {
     transform: scale(1.1);
     transition: 0.2s ease-in;
+}
+
+.popup-image {
+    display: none;
+    position: fixed;
+    background: rgba(0, 0, 0, 0.9);
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+.popup-image img {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70%;
+    height: 75%;
 }
 
 

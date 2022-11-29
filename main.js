@@ -10,10 +10,13 @@ const options = {
 var forwardButton = document.querySelector('.next_page');
 var backwardsButton = document.querySelector('.previous_page')
 var img = document.querySelectorAll('img')
+var image_container = document.querySelector('.image-container')
 var search_input = document.querySelector('input')
 var page_number = document.querySelector('.page_number')
 var loader = document.querySelectorAll('.loading')
-
+var popup_image = document.getElementsByClassName('"popup-image')
+var page_div = document.getElementById('page')
+var navbar = document.getElementsByTagName('nav')
 
 
 
@@ -46,6 +49,12 @@ if(page < 2){
 
 var url = 'https:pexelsdimasv1.p.rapidapi.com/v1/curated?per_page=12&page=' + page
 
+// image_container.addEventListener('click', (e)=> {
+
+//     img.appendChild(popup_image)
+
+// })
+
  forwardButton.addEventListener('click', (e)=> {
     
         url = url.slice(0, -1)
@@ -53,9 +62,9 @@ var url = 'https:pexelsdimasv1.p.rapidapi.com/v1/curated?per_page=12&page=' + pa
         page_number.innerHTML = 'Page ' + page
         url = url + page
         backwardsButton.removeAttribute('disabled')
-        for(let index = 0; index < img.length; index++){
-            img[index].src = ""
-        }
+        while (image_container.firstChild) {
+            image_container.removeChild(image_container.lastChild);
+          }
         fetchImages(url)
         
         
@@ -67,9 +76,9 @@ var url = 'https:pexelsdimasv1.p.rapidapi.com/v1/curated?per_page=12&page=' + pa
         page = page -= 1
         page_number.innerHTML = 'Page ' + page
         url = url + page
-        for(let index = 0; index < img.length; index++){
-            img[index].src = ""
-        }
+        while (image_container.firstChild) {
+            image_container.removeChild(image_container.lastChild);
+          }
         fetchImages(url)
 
         if(page < 2)    {
@@ -84,9 +93,6 @@ search_input.addEventListener('keypress', (e)=> {
     if(e.key === "Enter"){
         page = 1
         page_number.innerHTML = 'Page ' + page
-        for(let index = 0; index < img.length; index++){
-            img[index].src = ""
-        }
         searchImages()
         e.preventDefault()
     }
@@ -97,6 +103,14 @@ search_input.addEventListener('keypress', (e)=> {
 function searchImages(){
     
     this.url = 'https:exelsdimasv1.p.rapidapi.com/v1/search?query='+ search_input.value +'&per_page=12&page=' + page
+    
+    if(document.contains(document.getElementById('no_pics'))){
+        document.getElementById('no_pics').remove()
+    }
+
+    while (image_container.firstChild) {
+        image_container.removeChild(image_container.lastChild);
+      }
     this.fetchImages(url)
 
 }
@@ -112,17 +126,42 @@ function fetchImages() {
     }
 function displayImages(data){
 
-        for(let index = 0; index < img.length; index++){
-            const image = data.photos[index].src.original
-            img[index].src = image
-            img[index].style.opacity = 0
+
+        if(data.photos.length <= 0){
+            var nopics_div = document.createElement("div")
+            nopics_div.id = "no_pics"
+            nopics_div.innerText = "No Pictures found"
+            document.body.appendChild(nopics_div);
+
+        } else {
+            
+            image_container.append()
+           
+
+            for(let index = 0; index < data.photos.length; index++){
+
+                console.log(data.photos[index].src.original)
+    
+                var image_div = document.createElement("div");
+                var image_el = document.createElement("img")
+                image_div.className = "image";
+                document.body.appendChild(image_container);
+                image_container.appendChild(image_div)
+                image_div.appendChild(image_el)
+                image_el.src = data.photos[index].src.original
+                
+                
+            }
         }
 
+
+       
+
+        
+
+    
         
 }
-
-
-
 
 window.onload = (event) => {
     fetchImages()
