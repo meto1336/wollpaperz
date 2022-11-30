@@ -186,9 +186,12 @@ img:hover {
 }
 
 #popup-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     visibility: hidden;
     position: fixed;
-    background: rgba(0, 0, 0, 0.97);
+    background: rgb(0, 0, 0, 0.97);
     height: 100%;
     width: 100%;
     top: 0;
@@ -198,12 +201,58 @@ img:hover {
 #popup-image img {
     position: absolute;
     top: 50%;
-    left: 50%;
+    left: 42%;
     transform: translate(-50%, -50%);
-    width: 70%;
-    height: 90%;
+    width: 60%;
+    height: 70%;
 }
 
+#white-background {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    background: white;
+    width: 80%;
+    height: 80%;
+}
+
+#close_image {
+    position: absolute;
+    top: 3%;
+    right: 3%;
+    color: white;
+    background: black;
+    border: none;
+    font-size: xx-large;
+    cursor: pointer;
+}
+
+#close_image:hover {
+    transform: scale(1.1);
+}
+
+.pop-buttons {
+    height: 20%;
+    width: 15%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.pop-buttons button{
+    width: 9rem;
+    height: 3rem;
+    background: black;
+    color: white;
+    border: none;
+    font-size: large;
+    border-radius: 20px;
+}
+
+.pop-buttons button:hover {
+    transform: scale(1.1);
+    transition: 0.1s ease-in;
+}
 
 
 .navbar-header a{

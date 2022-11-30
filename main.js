@@ -18,6 +18,8 @@ var popup_image = document.getElementById('popup-image')
 var no_pics = document.getElementById('no_pics')
 var close_image_button = document.getElementById('close_image')
 var image_div_container = document.getElementsByClassName('image')
+var popup_image_white_background = document.getElementById('white-background')
+var download_button = document.getElementById('download_button')
 
 
 function displayLoading(){
@@ -97,8 +99,8 @@ search_input.addEventListener('keypress', (e)=> {
 
 function searchImages(){
 
+    
     this.url = 'https:exelsdimasv1.p.rapidapi.com/v1/search?query='+ search_input.value +'&per_page=12&page=' + page
-
 
     while (image_container.firstChild) {
         image_container.removeChild(image_container.lastChild);
@@ -142,15 +144,19 @@ function displayImages(data){
                 })
 
                 img_tag[index].addEventListener('click', function(){
-                    popup_image.appendChild(img_tag[index])
+                    popup_image_white_background.appendChild(img_tag[index])
                     popup_image.style.visibility = "visible"
                     document.body.style.overflow = "hidden"
                 })
                 close_image_button.addEventListener('click', function(){
                     image_div_container[index].appendChild(img_tag[index])
-                    popup_image.style.visibility = "hidden"
                     document.body.style.overflow = "visible"
+                    popup_image.style.visibility = "hidden"
                 })
+                download_button.addEventListener('click', function(){
+                   
+                })
+                
             }
 
             
@@ -161,7 +167,6 @@ function displayImages(data){
 
 
 }
-
 
 
 
