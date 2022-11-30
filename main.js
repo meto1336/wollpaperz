@@ -99,6 +99,15 @@ search_input.addEventListener('keypress', (e)=> {
 
 function searchImages(){
 
+    if(no_pics.style.visibility.includes('visible')){
+        no_pics.style.visibility = 'hidden'
+    }
+
+            
+    if(image_container.style.display.includes('flex')){
+        image_container.style.display = 'grid'
+
+    }
     
     this.url = 'https:exelsdimasv1.p.rapidapi.com/v1/search?query='+ search_input.value +'&per_page=12&page=' + page
 
@@ -124,8 +133,13 @@ function displayImages(data){
         if(data.photos.length <= 0){
             no_pics.style.visibility = "visible"
 
-        } else {
+        }
+        
+        else {
 
+            if(data.photos.length <= 5) {
+                image_container.style.display = 'flex'
+            }
 
             for(let index = 0; index < data.photos.length; index++){
 
@@ -153,10 +167,10 @@ function displayImages(data){
                     document.body.style.overflow = "visible"
                     popup_image.style.visibility = "hidden"
                 })
-                download_button.addEventListener('click', function(){
-                   
-                })
                 
+                download_button.addEventListener('click', function(){
+                    download()
+                })
             }
 
             
@@ -168,6 +182,19 @@ function displayImages(data){
 
 }
 
+
+
+function download(url, filename) {
+    fetch(url)
+      .then(response => response.blob())
+      .then(blob => {
+        const link = document.createElement("a");
+        link.href = URL.createObjectURL(blob);
+        link.download = filename;
+        link.click();
+    })
+    .catch(console.error);
+  }
 
 
 

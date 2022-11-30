@@ -67,6 +67,7 @@ body {
     grid-template-rows: repeat(4, 300px);
     /* grid-auto-rows: row dense; */
     margin: 3rem;
+    /* display: flex; */
 }
 
 .search-input input{
