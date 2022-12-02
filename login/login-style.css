@@ -1,0 +1,50 @@
+body {
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#login_form {
+    display: flex;
+    flex-direction: column;
+}
+
+#login_form input {
+    margin-bottom: 3rem;
+    font-size: large;
+    width: 20rem;
+    height: 1.8rem;
+    padding-left: 1rem;
+    border-radius: 1rem;
+    border: 1px solid black;
+    outline: none;
+}
+
+#login_form input[type=submit] {
+    background: white;
+    color: black;
+    font-size: large;
+    width: 21.5rem;
+    height: 2rem;
+    border-radius: 1rem;
+    margin-top: 1rem;
+
+}
+
+
+#login_form input[type=submit]:hover {
+
+    background: black;
+    color: white;
+    transition: 0.2s ease-out;
+
+}
+
+#login_form label {
+    margin-bottom: 0.2rem;
+    font-size: large;
+}
+

@@ -133,86 +133,83 @@ function fetchImages() {
     }
 
 
-// function displayImages(data){
+function displayImages(data){
 
 
-//         if(data.photos.length <= 0){
-//             no_pics.style.display = 'flex'
-//             image_container.style.display = 'flex'
+        if(data.photos.length <= 0){
+            no_pics.style.display = 'flex'
+            image_container.style.display = 'flex'
 
-//         }
+        }
         
-//         else {
+        else {
 
-//             if(data.photos.length <= 5) {
-//                 image_container.style.display = 'flex'
-//             }
+            if(data.photos.length <= 5) {
+                image_container.style.display = 'flex'
+            }
 
-//             for(let index = 0; index < data.photos.length; index++){
-
-
-//                 var image_div = document.createElement("div");
-//                 var image_el = document.createElement("img")
-//                 image_div.className = "image";
-//                 image_container.appendChild(image_div)
-//                 image_div.appendChild(image_el)
-//                 image_el.src = data.photos[index].src.original
-//                 image_el.className = 'img'
-//                 img_tag[index].style.opacity = 0
+            for(let index = 0; index < data.photos.length; index++){
 
 
-//                 img_tag[index].addEventListener('load', function(){
-//                     img_tag[index].classList.add('active')
-//                     img_tag[index].style.opacity = 1
-//                     img_tag[index].style.pointerEvents = 'auto'
-//                     img_tag[index].style.cursor = 'pointer'
+                var image_div = document.createElement("div");
+                var image_el = document.createElement("img")
+                image_div.className = "image";
+                image_container.appendChild(image_div)
+                image_div.appendChild(image_el)
+                image_el.src = data.photos[index].src.original
+                image_el.className = 'img'
+                img_tag[index].style.opacity = 0
 
 
-//                 })
-//                 img_tag[index].addEventListener('click', function(){
-//                     download_image = img_tag[index].src
-//                     // image_container.removeChild('')
-//                     img_tag[index].style.pointerEvents = 'none'
-//                     popup_image_white_background.insertAdjacentElement('afterbegin', img_tag[index])
-//                     popup_image.style.visibility = 'visible'
-//                     document.body.style.overflow = 'hidden'
-//                     // console.log(currentimg)
-//                 }),
-//                 close_image_button.addEventListener('click', function(){
-//                     // popup_image.removeChild(img_tag[index])
-//                     image_div_container[index].append(img_tag[index])
-//                     popup_image.style.visibility = 'hidden'
-//                     document.body.style.overflow = 'visible'
+                img_tag[index].addEventListener('load', function(){
+                    img_tag[index].classList.add('active')
+                    img_tag[index].style.opacity = 1
+                    img_tag[index].style.pointerEvents = 'auto'
+                    img_tag[index].style.cursor = 'pointer'
 
-//                     // var image_div_container = document.getElementsByClassName('image').innerHTML === ""
+
+                })
+                img_tag[index].addEventListener('click', function(){
+                    download_image = img_tag[index].src
+                    // image_container.removeChild('')
+                    img_tag[index].style.pointerEvents = 'none'
+                    popup_image_white_background.insertAdjacentElement('afterbegin', img_tag[index])
+                    popup_image.style.visibility = 'visible'
+                    document.body.style.overflow = 'hidden'
+                    // console.log(currentimg)
+                }),
+                close_image_button.addEventListener('click', function(){
+                    // popup_image.removeChild(img_tag[index])
+                    image_div_container[index].append(img_tag[index])
+                    popup_image.style.visibility = 'hidden'
+                    document.body.style.overflow = 'visible'
+
+                    // var image_div_container = document.getElementsByClassName('image').innerHTML === ""
                    
-//                 })
+                })
 
                 
-//             }
+            }
 
             
 
             
-//         }
+        }
 
 
 
-// }
-
-// const imgs = document.querySelectorAll('img')
-
-// imgs.forEach(img => {
-
-//    img.addEventListener('click', event => {
-//     console.log(img.src)
-//    });
-
-// });
-
-function displayImages(data){
-    console.log(data.photos)
 }
+
+const imgs = document.querySelectorAll('img')
+
+imgs.forEach(img => {
+
+   img.addEventListener('click', event => {
+    console.log(img.src)
+   });
+
+});
+
 
 
 download_button.addEventListener('click', function(){
