@@ -17,9 +17,11 @@ var loader = document.querySelectorAll('.loading')
 var popup_image = document.getElementById('popup-image')
 var no_pics = document.getElementById('no_pics')
 var close_image_button = document.getElementById('close_image')
-var image_div_container = document.getElementsByClassName('image')
 var popup_image_white_background = document.getElementById('white-background')
 var download_button = document.getElementById('download_button')
+var image_div_container = document.getElementsByClassName('image')
+
+
 
 
 function displayLoading(){
@@ -62,6 +64,7 @@ var url = 'https:pexelsdimasv1.p.rapidapi.com/v1/curated?per_page=12&page=' + pa
         while (image_container.firstChild) {
             image_container.removeChild(image_container.lastChild);
           }
+        
         fetchImages(url)
 
 
@@ -76,6 +79,7 @@ var url = 'https:pexelsdimasv1.p.rapidapi.com/v1/curated?per_page=12&page=' + pa
         while (image_container.firstChild) {
             image_container.removeChild(image_container.lastChild);
           }
+        
         fetchImages(url)
 
         if(page < 2)    {
@@ -99,8 +103,8 @@ search_input.addEventListener('keypress', (e)=> {
 
 function searchImages(){
 
-    if(no_pics.style.visibility.includes('visible')){
-        no_pics.style.visibility = 'hidden'
+    if(no_pics.style.display.includes('flex')){
+        no_pics.style.display = 'none'
     }
 
             
@@ -115,6 +119,7 @@ function searchImages(){
         image_container.removeChild(image_container.lastChild);
       }
     this.fetchImages(url)
+    
 
 }
 
@@ -125,63 +130,95 @@ function fetchImages() {
        .then(res => res.json())
        .then(data => this.displayImages(data))
 
-
     }
-function displayImages(data){
 
 
-        if(data.photos.length <= 0){
-            no_pics.style.visibility = "visible"
+// function displayImages(data){
 
-        }
+
+//         if(data.photos.length <= 0){
+//             no_pics.style.display = 'flex'
+//             image_container.style.display = 'flex'
+
+//         }
         
-        else {
+//         else {
 
-            if(data.photos.length <= 5) {
-                image_container.style.display = 'flex'
-            }
+//             if(data.photos.length <= 5) {
+//                 image_container.style.display = 'flex'
+//             }
 
-            for(let index = 0; index < data.photos.length; index++){
+//             for(let index = 0; index < data.photos.length; index++){
 
 
-                var image_div = document.createElement("div");
-                var image_el = document.createElement("img")
-                image_div.className = "image";
-                image_container.appendChild(image_div)
-                image_div.appendChild(image_el)
-                image_el.src = data.photos[index].src.original
-                img_tag[index].style.opacity = 0
+//                 var image_div = document.createElement("div");
+//                 var image_el = document.createElement("img")
+//                 image_div.className = "image";
+//                 image_container.appendChild(image_div)
+//                 image_div.appendChild(image_el)
+//                 image_el.src = data.photos[index].src.original
+//                 image_el.className = 'img'
+//                 img_tag[index].style.opacity = 0
 
-                img_tag[index].addEventListener('load', function(){
-                    img_tag[index].classList.add('active')
-                    img_tag[index].style.opacity = 1
-                })
 
-                img_tag[index].addEventListener('click', function(){
-                    popup_image_white_background.appendChild(img_tag[index])
-                    popup_image.style.visibility = "visible"
-                    document.body.style.overflow = "hidden"
-                })
-                close_image_button.addEventListener('click', function(){
-                    image_div_container[index].appendChild(img_tag[index])
-                    document.body.style.overflow = "visible"
-                    popup_image.style.visibility = "hidden"
-                })
+//                 img_tag[index].addEventListener('load', function(){
+//                     img_tag[index].classList.add('active')
+//                     img_tag[index].style.opacity = 1
+//                     img_tag[index].style.pointerEvents = 'auto'
+//                     img_tag[index].style.cursor = 'pointer'
+
+
+//                 })
+//                 img_tag[index].addEventListener('click', function(){
+//                     download_image = img_tag[index].src
+//                     // image_container.removeChild('')
+//                     img_tag[index].style.pointerEvents = 'none'
+//                     popup_image_white_background.insertAdjacentElement('afterbegin', img_tag[index])
+//                     popup_image.style.visibility = 'visible'
+//                     document.body.style.overflow = 'hidden'
+//                     // console.log(currentimg)
+//                 }),
+//                 close_image_button.addEventListener('click', function(){
+//                     // popup_image.removeChild(img_tag[index])
+//                     image_div_container[index].append(img_tag[index])
+//                     popup_image.style.visibility = 'hidden'
+//                     document.body.style.overflow = 'visible'
+
+//                     // var image_div_container = document.getElementsByClassName('image').innerHTML === ""
+                   
+//                 })
+
                 
-                download_button.addEventListener('click', function(){
-                    download()
-                })
-            }
+//             }
 
             
 
             
-        }
+//         }
 
 
 
+// }
+
+// const imgs = document.querySelectorAll('img')
+
+// imgs.forEach(img => {
+
+//    img.addEventListener('click', event => {
+//     console.log(img.src)
+//    });
+
+// });
+
+function displayImages(data){
+    console.log(data.photos)
 }
 
+
+download_button.addEventListener('click', function(){
+    download(download_image, download_image)
+    // console.log(download_image)
+})
 
 
 function download(url, filename) {
@@ -198,7 +235,32 @@ function download(url, filename) {
 
 
 
-window.onload = (event) => {
+// window.onload = () => {
+    
+
+   
+// }
+
+window.addEventListener('load', function(){
+
     fetchImages()
+
+    
     search_input.value = ''
-}
+
+    
+})
+
+
+
+    // if (selection) {
+    //   alert('The element exists in the page.');
+    // } else {
+    //   alert('The element does not exist in the page.');
+    // }
+
+
+//    document.addEventListener('DOMContentLoaded', function(){
+   
+//    })
+
