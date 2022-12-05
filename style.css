@@ -195,7 +195,7 @@ img:hover {
     visibility: hidden;
     position: fixed;
     overflow: hidden;
-    background: rgb(0, 0, 0, 0.97);
+    background: rgb(0, 0, 0);
     height: 100%;
     width: 100%;
     top: 0;

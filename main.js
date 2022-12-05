@@ -170,6 +170,9 @@ function displayImages(data){
 
                 })
                 img_tag[index].addEventListener('click', function(){
+                    new_url = data.photos[index].url
+                    url_with_numbers = new_url.replace('https://www.pexels.com/photo/', '')
+                    replaced_url = url_with_numbers.slice(0, -10)
                     download_image = img_tag[index].src
                     // image_container.removeChild('')
                     img_tag[index].style.pointerEvents = 'none'
@@ -183,14 +186,14 @@ function displayImages(data){
                     image_div_container[index].append(img_tag[index])
                     popup_image.style.visibility = 'hidden'
                     document.body.style.overflow = 'visible'
+                    img_tag[index].style.pointerEvents = 'auto'
+                    img_tag[index].style.cursor = 'pointer'
 
-                    // var image_div_container = document.getElementsByClassName('image').innerHTML === ""
                    
                 })
 
                 
             }
-
             
 
             
@@ -200,21 +203,14 @@ function displayImages(data){
 
 }
 
+
 const imgs = document.querySelectorAll('img')
 
-imgs.forEach(img => {
-
-   img.addEventListener('click', event => {
-    console.log(img.src)
-   });
-
-});
 
 
 
 download_button.addEventListener('click', function(){
-    download(download_image, download_image)
-    // console.log(download_image)
+    download(download_image, replaced_url)
 })
 
 
@@ -231,13 +227,6 @@ function download(url, filename) {
   }
 
 
-
-// window.onload = () => {
-    
-
-   
-// }
-
 window.addEventListener('load', function(){
 
     fetchImages()
@@ -249,15 +238,4 @@ window.addEventListener('load', function(){
 })
 
 
-
-    // if (selection) {
-    //   alert('The element exists in the page.');
-    // } else {
-    //   alert('The element does not exist in the page.');
-    // }
-
-
-//    document.addEventListener('DOMContentLoaded', function(){
-   
-//    })
 
