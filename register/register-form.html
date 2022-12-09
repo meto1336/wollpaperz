@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/register/register-style.css">
+    <link rel="stylesheet" href="register-style-form.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Rubik+Bubbles&family=VT323&display=swap" rel="stylesheet">
     <title>Sign Up</title>
 </head>
 <body>
     <h1>Register</h1>
 
-    <form action="register/register.php" id="register_form" method="post">
+    <form id="register_form" method="post" action="register.php">
 
 
         <label>First Name</label>
@@ -22,14 +22,11 @@
 
         
         <label>Username</label>
-        <input type="text" id="username" name="username" required>
+        <input type="text" name="username" required>
 
          <label>Password</label>
-        <input type="password" id="password" name="username_password"  required>
+        <input type="password" id="username_password" name="password"  required>
 
-        <input type="submit" value="Register">
+        <input type="submit" value="Register" name="submit">
 
      </form>
-
-</body>
-</html>

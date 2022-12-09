@@ -1,0 +1,21 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+    flex-direction: column;
+    height: 80vh;
+}
+
+button {
+    background: black;
+    font-size: large;
+    width: 13rem;
+    height: 2rem;
+    border-radius: 1rem;
+    text-decoration: none;
+}
+a {
+    text-decoration: none;
+}

@@ -170,7 +170,7 @@ img {
 }
 
 img.active {
-    animation: opacity_change 1s;
+    animation: opacity_change 0.2s;
 }
 
 @keyframes opacity_change { 
