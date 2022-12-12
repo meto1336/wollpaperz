@@ -1,3 +1,11 @@
+<?php
+session_start();
+if(!isset($_SESSION["username"])){
+  header("Location: index.php");
+  exit;
+}
+ ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,13 +39,16 @@
 
         <div class="navbar-links">
             <ul>
-                <li><a href="register/register.php">Sign Up</a></li>
-                <li><a href="login/login.php">Login</a>
-                <ul>
-                    <li><a id="saved_image" href="">Penis</a></li>
-                    <li><a id="logout" href="">Druck</a></li>
-                </ul>
+                <li>
+                    <a href="">
+                    <?php echo $_SESSION["username"];?>
+                    </a>
+                    <ul>
+                        <li><a href="#">Saved Images</a></li>
+                        <li><a href="logout.php">Logout</a></li>
+                    </ul>    
                 </li>
+               
             </ul>
         </div>
     </nav>
@@ -51,6 +62,8 @@
                     <button id="download_button">
                         Download
                     </button>    
+                    </a> 
+                    <button id="save_image_button">Save Image</button>
             </div>
         </div>
         <button id="close_image">X</button>
@@ -78,6 +91,6 @@
 
 </body>
 
-<script src="main.js"></script>
-<script src="toggleMenu.js"></script>
+<script src="../main.js"></script>
+<script src="../toggleMenu.js"></script>
 </html>

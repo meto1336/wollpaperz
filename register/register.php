@@ -2,7 +2,8 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Account erstellen</title>
+    <title>Register Account</title>
+    <link rel="stylesheet" href="register.css">
   </head>
   <body>
     <?php
@@ -27,7 +28,7 @@
             $stmt->bindParam(":pw", $hash);
             $stmt->bindParam(":email", $_POST["email"]);
             $stmt->execute();
-            echo "Dein Account wurde angelegt";
+            header("location: registered.html");
           } else {
             echo "Die Passwörter stimmen nicht überein";
           }
@@ -39,15 +40,15 @@
       }
     }
      ?>
-    <h1>Account erstellen</h1>
+    <h1>Register</h1>
     <form action="register.php" method="post">
       <input type="text" name="username" placeholder="Username" required><br>
       <input type="text" name="email" placeholder="Email" required><br>
       <input type="password" name="pw" placeholder="Password" required><br>
       <input type="password" name="pw2" placeholder="Repeat Password" required><br>
-      <button type="submit" name="submit">Erstellen</button>
+      <button type="submit" name="submit">Create Account</button>
     </form>
     <br>
-    <a href="index.php">Hast du bereits einen Account?</a>
+    <a href="../login/login.php">Do you already have an account?</a>
   </body>
 </html>

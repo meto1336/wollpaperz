@@ -48,7 +48,7 @@
 
 @font-face {
     font-family: 'silkscreen';
-    src: url('fonts/slkscr.ttf');
+    src: url('../fonts/slkscr.ttf');
 }
 
 body {
@@ -246,7 +246,7 @@ img:hover {
     background: white;
     color: black;
     border: 1px solid black;
-    width: 10rem;
+    width: 3rem;
     font-size: large;
     border-radius: 20px;
     margin-top: 1rem;
@@ -270,47 +270,22 @@ img:hover {
 
 .navbar-links ul {
     padding: 0;
-    margin-right: 4rem;
+    margin-right: 6rem;
     display: flex;
 }
+
+.navbar-links ul li ul {
+    display: block;
+    position: absolute;
+}
+
 
 .navbar-links li {
     list-style: none;
+    position: relative;
 }
 
-nav ul li ul{
-
-    visibility: hidden;
-
-    display: flex;
-
-    flex-direction: column;
-
-    position: absolute;
-
-    background-color: white;
-
-    border-radius: 0px 0px 12px 12px;
-
-}
-
-nav ul li:hover ul{
-
-    visibility: visible;
-
-}
-
-
-nav ul li ul li{
-
-   margin-bottom: 1rem;
-   margin-top: 2rem;
-
-}
-
-
-
-.navbar-links li a {
+.navbar-links li a{
     text-decoration: none;
     font-size: 13pt;
     color: rgb(0, 0, 0);

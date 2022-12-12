@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="login.css">
     <title>Document</title>
 </head>
 
@@ -37,10 +38,11 @@
         return $randomString;
     }
     ?>
-    <h1>Passwort vergessen?</h1>
+    <h1>Forgot Password?</h1>
     <form action="passwordreset.php" method="POST">
-        <input type="email" name="email" placeholder="Email" required><br>
-        <button type="submit" name="submit">Zurücksetzen</button>
+        <input type="text" name="email" placeholder="Email" required>
+        <br>
+        <button type="submit" name="submit" id="submit">Reset</button>
     </form>
 </body>
 
