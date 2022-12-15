@@ -43,10 +43,10 @@ if(!isset($_SESSION["username"])){
                     <a href="">
                     <?php echo $_SESSION["username"];?>
                     </a>
-                    <ul>
-                        <li><a href="#">Saved Images</a></li>
-                        <li><a href="logout.php">Logout</a></li>
-                    </ul>    
+                <ul>
+                    <li><a id="saved_image" href="">Saved Images</a></li>
+                    <li><a id="logout" href="logout.php">Logout</a><li>
+                </ul>  
                 </li>
                
             </ul>

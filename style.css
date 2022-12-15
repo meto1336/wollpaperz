@@ -245,11 +245,10 @@ img:hover {
 .pop-buttons button{
     background: white;
     color: black;
-    border: 1px solid black;
-    width: 10rem;
+    border: 0.1rem solid black;
+    width: 7rem;
     font-size: large;
     border-radius: 20px;
-    margin-top: 1rem;
 }
 
 .pop-buttons button:hover {
@@ -284,13 +283,27 @@ nav ul li ul{
 
     display: flex;
 
-    flex-direction: column;
+    flex-flow: column wrap;
+    
+    justify-content: space-around;
 
     position: absolute;
 
     background-color: white;
 
-    border-radius: 0px 0px 12px 12px;
+    border-radius: 0px 0px 20px 20px;
+
+    margin-top: 0.9rem;
+
+    margin-left: -2.5rem;
+    
+    border: 1px solid black;
+
+    width: max-content;
+
+    /* margin-right: 1rem; */
+
+    float: left;
 
 }
 
@@ -303,12 +316,19 @@ nav ul li:hover ul{
 
 nav ul li ul li{
 
-   margin-bottom: 1rem;
-   margin-top: 2rem;
-
+    /* margin-bottom: 1rem; */
+    margin-top: 2rem;
+    width: 100%;
+    
 }
 
+nav ul li ul li a{
 
+    /* margin-bottom: 1rem; */
+    margin-top: 2rem;
+    width: 100%;
+    
+}
 
 .navbar-links li a {
     text-decoration: none;
@@ -342,7 +362,7 @@ nav ul li ul li{
 
 footer {
     color: rgb(0, 0, 0);
-    font-size: 1px;
+    font-size: 1rem;
 }
 
 

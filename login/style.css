@@ -73,7 +73,7 @@ body {
 .search-input input{
 
     width: 40rem;
-    height: 7vh;
+    height: 6vh;
     font-size: x-large;
     border-radius: 20px;
     border: 2px solid rgb(81, 81, 81);
@@ -133,7 +133,7 @@ footer {
 
 .navbar {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
 }
 
@@ -245,8 +245,8 @@ img:hover {
 .pop-buttons button{
     background: white;
     color: black;
-    border: 1px solid black;
-    width: 3rem;
+    border: 0.1rem solid black;
+    width: 7rem;
     font-size: large;
     border-radius: 20px;
     margin-top: 1rem;
@@ -270,22 +270,68 @@ img:hover {
 
 .navbar-links ul {
     padding: 0;
-    margin-right: 6rem;
+    margin-right: 4rem;
     display: flex;
 }
 
-.navbar-links ul li ul {
-    display: block;
-    position: absolute;
-}
-
-
 .navbar-links li {
     list-style: none;
-    position: relative;
 }
 
-.navbar-links li a{
+nav ul li ul{
+
+    visibility: hidden;
+
+    display: flex;
+
+    flex-flow: column wrap;
+    
+    /* justify-content: space-around; */
+
+    position: absolute;
+
+    background-color: white;
+
+    border-radius: 20px 20px 20px 20px;
+
+    margin-top: 0.9rem;
+
+    margin-left: -2.5rem;
+    
+    border: 1px solid black;
+
+    width: max-content;
+
+    /* margin-right: 1rem; */
+
+    float: left;
+
+}
+
+nav ul li:hover ul{
+
+    visibility: visible;
+
+}
+
+
+nav ul li ul li{
+
+    /* margin-bottom: 1rem; */
+    margin-top: 2rem;
+    width: 100%;
+    
+}
+
+nav ul li ul li a{
+
+    /* margin-bottom: 1rem; */
+    margin-top: 2rem;
+    width: 100%;
+    
+}
+
+.navbar-links li a {
     text-decoration: none;
     font-size: 13pt;
     color: rgb(0, 0, 0);
