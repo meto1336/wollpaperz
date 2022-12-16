@@ -226,12 +226,14 @@ img:hover {
     position: absolute;
     top: 3%;
     right: 3%;
-    color: white;
-    background: rgb(0, 0, 0, 0.97);
-    border: none;
-    font-size: large;
+    background: url("../pngs/closing.png");
     cursor: pointer;
+    width: 1.5rem;
+    height: 1.5rem;
+    background-size: 100%;
+    border: none;
 }
+
 
 #close_image:hover {
     transform: scale(1.1);

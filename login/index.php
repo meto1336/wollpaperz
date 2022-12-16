@@ -66,15 +66,13 @@ if(!isset($_SESSION["username"])){
                     <button id="save_image_button">Save Image</button>
             </div>
         </div>
-        <button id="close_image">X</button>
+        <button id="close_image"></button>
     </div>
 
     <div class="image-container">
        
     </div>
 
-    
-    
 
     <div id="page">
         <p class="page_number">Page 1</p>

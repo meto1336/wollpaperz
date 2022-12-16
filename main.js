@@ -172,7 +172,7 @@ function displayImages(data){
                 img_tag[index].addEventListener('click', function(){
                     new_url = data.photos[index].url
                     url_with_numbers = new_url.replace('https://www.pexels.com/photo/', '')
-                    replaced_url = url_with_numbers.slice(0, -10)
+                    replaced_url = url_with_numbers.slice(0, -9)
                     download_image = img_tag[index].src
                     // image_container.removeChild('')
                     img_tag[index].style.pointerEvents = 'none'
