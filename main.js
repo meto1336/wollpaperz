@@ -13,13 +13,14 @@ var image_container = document.querySelector('.image-container')
 var search_input = document.querySelector('input')
 var page_number = document.querySelector('.page_number')
 var img_tag = document.getElementsByTagName('img')
-var loader = document.querySelectorAll('.loading')
+var loader = document.getElementById('loader')
 var popup_image = document.getElementById('popup-image')
 var no_pics = document.getElementById('no_pics')
 var close_image_button = document.getElementById('close_image')
 var popup_image_white_background = document.getElementById('white-background')
 var download_button = document.getElementById('download_button')
 var image_div_container = document.getElementsByClassName('image')
+var photographer = document.getElementById("photographer")
 
 
 
@@ -46,7 +47,7 @@ if(page < 2){
     backwardsButton.setAttribute('disabled', true);
 }
 
-var url = 'https:pexelsdimasv1.p.rapidapi.com/v1/curated?per_page=12&page=' + page
+var url = 'https://pexelsdimasv1.p.rapidapi.com/v1/curated?per_page=12&page=' + page
 
 // image_container.addEventListener('click', (e)=> {
 
@@ -118,9 +119,9 @@ function searchImages(){
     while (image_container.firstChild) {
         image_container.removeChild(image_container.lastChild);
       }
+      loader.style.visibility = 'visible'
     this.fetchImages(url)
     
-
 }
 
 
@@ -166,11 +167,13 @@ function displayImages(data){
                     img_tag[index].style.opacity = 1
                     img_tag[index].style.pointerEvents = 'auto'
                     img_tag[index].style.cursor = 'pointer'
+                    // loader.style.visibility = 'visible'
+                    loader.style.visibility = 'hidden'
 
 
                 })
                 img_tag[index].addEventListener('click', function(){
-                    new_url = data.photos[index].url
+                    new_url = data.photos[index].src.original
                     url_with_numbers = new_url.replace('https://www.pexels.com/photo/', '')
                     replaced_url = url_with_numbers.slice(0, -9)
                     download_image = img_tag[index].src
@@ -193,8 +196,8 @@ function displayImages(data){
                 })
 
                 
+                
             }
-            
 
             
         }
