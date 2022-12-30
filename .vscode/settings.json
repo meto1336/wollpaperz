@@ -2,7 +2,7 @@
     "sqltools.connections": [
         {
             "mysqlOptions": {
-                "authProtocol": "default"
+                "authProtocol": "xprotocol"
             },
             "previewLimit": 50,
             "server": "localhost",
@@ -12,7 +12,7 @@
             "database": "wollpaperz",
             "username": "sqluser",
             "password": "Warum1-und",
-            "connectionTimeout": 15
+            "connectionTimeout": 30
         }
     ]
 }

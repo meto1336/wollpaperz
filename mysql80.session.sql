@@ -1,1 +1,1 @@
-SELECT * from accounts;
+GRANT ALL PRIVILEGES ON *.* TO 'sqluser'@'localhost' IDENTIFIED BY 'Warum1-und';
