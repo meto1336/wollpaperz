@@ -9,7 +9,8 @@
     <?php
     if(isset($_POST["submit"])){
       require("mysql.php");
-      $stmt = $mysql->prepare("SELECT * FROM accounts WHERE USERNAME = :user"); //Username überprüfen
+      $stmt = $mysql->prepare("SELECT * FROM accounts
+       WHERE USERNAME = :user"); //Username überprüfen
       $stmt->bindParam(":user", $_POST["username"]);
       $stmt->execute();
       $count = $stmt->rowCount();
@@ -30,20 +31,20 @@
             $stmt->execute();
             header("location: registered.html");
           } else {
-            echo "Die Passwörter stimmen nicht überein";
+            echo "The password fields don't match";
           }
         } else {
-          echo "Email bereits vergeben";
+          echo "email is already in use";
         }
       } else {
-        echo "Der Username ist bereits vergeben";
+        echo "username is already in use";
       }
     }
      ?>
     <h1>Register</h1>
     <form action="register.php" method="post">
-      <input type="text" name="firstname" id="" placeholder="First Name"><br>
-      <input type="text" name="lastname" id="" placeholder="Last Name"><br>
+      <!-- <input type="text" name="firstname" id="" placeholder="First Name"><br>
+      <input type="text" name="lastname" id="" placeholder="Last Name"><br> -->
       <input type="text" name="username" placeholder="Username" required><br>
       <input type="text" name="email" placeholder="Email" required><br>
       <input type="password" name="pw" placeholder="Password" required><br>
