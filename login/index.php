@@ -22,6 +22,10 @@ if(!isset($_SESSION["username"])){
 <body>
 
 
+        <div id="loader">
+        
+        </div>
+
     <nav class="navbar">
         <div class="navbar-header"><a href="index.html">wollpaperz</a>
 

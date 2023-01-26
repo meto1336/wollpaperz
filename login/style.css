@@ -265,9 +265,15 @@ img:hover {
     color: rgb(0, 0, 0);
     text-decoration: none;
     font-size: 2.5rem;
-    margin-left: 4rem;
+    /* margin-left: 4rem; */
     font-family: 'silkscreen';
 
+}
+
+.navbar-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .navbar-links ul {
@@ -286,27 +292,29 @@ nav ul li ul{
 
     display: flex;
 
-    flex-flow: column wrap;
+    flex-flow: column;
     
-    /* justify-content: space-around; */
+    justify-content: center;
 
     position: absolute;
 
-    background-color: white;
+    /* margin: auto; */
+
+    background-color: rgb(255, 255, 255);
 
     border-radius: 20px 20px 20px 20px;
 
     margin-top: 0.9rem;
 
-    margin-left: -2.5rem;
-    
-    border: 1px solid black;
+    /* margin-left: -2.5rem; */
 
-    width: max-content;
+    border: 0.5px solid black;
+
+    /* width: max-content; */
 
     /* margin-right: 1rem; */
 
-    float: left;
+    /* float: left; */
 
 }
 
@@ -314,6 +322,13 @@ nav ul li:hover ul{
 
     visibility: visible;
 
+}
+
+nav ul li ul {
+    
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
 
 
@@ -338,6 +353,7 @@ nav ul li ul li a{
     font-size: 13pt;
     color: rgb(0, 0, 0);
     padding: 1rem;
+    
 }
 
 .navbar-links li a:hover {
@@ -365,7 +381,6 @@ nav ul li ul li a{
 
 footer {
     color: rgb(0, 0, 0);
-    font-size: 1px;
 }
 
 

@@ -2,17 +2,16 @@
     "sqltools.connections": [
         {
             "mysqlOptions": {
-                "authProtocol": "xprotocol"
+                "authProtocol": "default"
             },
             "previewLimit": 50,
             "server": "localhost",
             "port": 3306,
             "driver": "MySQL",
-            "name": "mysql80",
+            "name": "MySQL80",
             "database": "wollpaperz",
-            "username": "sqluser",
-            "password": "Warum1-und",
-            "connectionTimeout": 30
+            "username": "root",
+            "password": "password"
         }
     ]
 }

@@ -25,17 +25,17 @@ var photographer = document.getElementById("photographer")
 
 
 
-function displayLoading(){
+function displayLoading(vis){
 
-    for (let index = 0; index < loader.length; index++) {
-        loader[index].classList.add('display')
-    }
+    // for (let index = 0; index < loader.length; index++) {
+    //     loader[index].classList.add('display')
+    //     console.log(loader[index])
+    // }
+
+    loader.style.visibility = vis
 
 }
 
-// for (let index = 0; index < img.length; index++) {
-
-// }
 
 
 
@@ -57,16 +57,19 @@ var url = 'https://pexelsdimasv1.p.rapidapi.com/v1/curated?per_page=12&page=' + 
 
  forwardButton.addEventListener('click', (e)=> {
 
-        url = url.slice(0, -1)
-        page = page += 1
-        page_number.innerHTML = 'Page ' + page
-        url = url + page
-        backwardsButton.removeAttribute('disabled')
-        while (image_container.firstChild) {
-            image_container.removeChild(image_container.lastChild);
-          }
+     url = url.slice(0, -1)
+     page = page += 1
+     page_number.innerHTML = 'Page ' + page
+     url = url + page
+     backwardsButton.removeAttribute('disabled')
+
+     while (image_container.firstChild) {
+         image_container.removeChild(image_container.lastChild);
+        }
         
         fetchImages(url)
+        window.scrollTo(0, 0);
+        // displayLoading()
 
 
  })
@@ -82,6 +85,8 @@ var url = 'https://pexelsdimasv1.p.rapidapi.com/v1/curated?per_page=12&page=' + 
           }
         
         fetchImages(url)
+
+        window.scrollTo(0, 0);
 
         if(page < 2)    {
         backwardsButton.setAttribute('disabled', true);
@@ -126,7 +131,7 @@ function searchImages(){
 
 
 function fetchImages() {
-    displayLoading()
+    displayLoading("visible")
     fetch(url, options)
        .then(res => res.json())
        .then(data => this.displayImages(data))
@@ -157,7 +162,7 @@ function displayImages(data){
                 image_div.className = "image";
                 image_container.appendChild(image_div)
                 image_div.appendChild(image_el)
-                image_el.src = data.photos[index].src.original
+                image_el.src = data.photos[index].src.large2x
                 image_el.className = 'img'
                 img_tag[index].style.opacity = 0
 
@@ -167,8 +172,7 @@ function displayImages(data){
                     img_tag[index].style.opacity = 1
                     img_tag[index].style.pointerEvents = 'auto'
                     img_tag[index].style.cursor = 'pointer'
-                    // loader.style.visibility = 'visible'
-                    loader.style.visibility = 'hidden'
+                    displayLoading('hidden')
 
 
                 })
@@ -176,10 +180,11 @@ function displayImages(data){
                     new_url = data.photos[index].url
                     url_with_numbers = new_url.replace('https://www.pexels.com/photo/', '')
                     replaced_url = url_with_numbers.slice(0, -9)
-                    download_image = img_tag[index].src
+                    download_image = data.photos[index].src.original
                     // image_container.removeChild('')
                     img_tag[index].style.pointerEvents = 'none'
                     popup_image_white_background.insertAdjacentElement('afterbegin', img_tag[index])
+                    image_el.src = data.photos[index].src.original
                     popup_image.style.visibility = 'visible'
                     document.body.style.overflow = 'hidden'
                     // console.log(currentimg)

@@ -9,44 +9,33 @@
     <?php
     if(isset($_POST["submit"])){
       require("mysql.php");
-      $stmt = $mysql->prepare("SELECT * FROM accounts
-       WHERE USERNAME = :user"); //Username überprüfen
+      $stmt = $mysql->prepare("SELECT * FROM accounts WHERE USERNAME = :user"); //Username überprüfen
       $stmt->bindParam(":user", $_POST["username"]);
       $stmt->execute();
       $count = $stmt->rowCount();
       if($count == 0){
-        //Username ist frei
-        $stmt = $mysql->prepare("SELECT * FROM accounts WHERE EMAIL = :email"); //Username überprüfen
-        $stmt->bindParam(":email", $_POST["email"]);
-        $stmt->execute();
         $count = $stmt->rowCount();
         if($count == 0){
           if($_POST["pw"] == $_POST["pw2"]){
             //User anlegen
-            $stmt = $mysql->prepare("INSERT INTO accounts (USERNAME, PASSWORD, EMAIL, TOKEN) VALUES (:user, :pw, :email, null)");
+            $stmt = $mysql->prepare("INSERT INTO accounts (USERNAME, PASSWORD) VALUES (:user, :pw)");
             $stmt->bindParam(":user", $_POST["username"]);
             $hash = password_hash($_POST["pw"], PASSWORD_BCRYPT);
             $stmt->bindParam(":pw", $hash);
-            $stmt->bindParam(":email", $_POST["email"]);
             $stmt->execute();
             header("location: registered.html");
           } else {
-            echo "The password fields don't match";
+            echo "<h2>The password fields do not match</h2>";
           }
-        } else {
-          echo "email is already in use";
         }
       } else {
-        echo "username is already in use";
+        echo "<h2>username is already in use</h2>";
       }
     }
      ?>
     <h1>Register</h1>
     <form action="register.php" method="post">
-      <!-- <input type="text" name="firstname" id="" placeholder="First Name"><br>
-      <input type="text" name="lastname" id="" placeholder="Last Name"><br> -->
-      <input type="text" name="username" placeholder="Username" required><br>
-      <input type="text" name="email" placeholder="Email" required><br>
+      <input type="text" name="username" placeholder="Username" maxlength="10" required><br>
       <input type="password" name="pw" placeholder="Password" required><br>
       <input type="password" name="pw2" placeholder="Repeat Password" required><br>
       <button type="submit" name="submit">Create Account</button>
