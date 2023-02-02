@@ -12,7 +12,7 @@ if(!isset($_SESSION["username"])){
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Rubik+Bubbles&family=VT323&display=swap" rel="stylesheet">
@@ -27,7 +27,7 @@ if(!isset($_SESSION["username"])){
         </div>
 
     <nav class="navbar">
-        <div class="navbar-header"><a href="index.html">wollpaperz</a>
+        <div class="navbar-header"><a href="index.php">wollpaperz</a>
 
             <a href="#" class="toggle-button">
                 <span class="bar"></span>
@@ -66,8 +66,12 @@ if(!isset($_SESSION["username"])){
                     <button id="download_button">
                         Download
                     </button>    
-                    </a> 
-                    <button id="save_image_button">Save Image</button>
+                    <a href="#" onclick="save_photo_to_db()"><button id="save_image_button">Save Image</button></a>
+                    <div class="attribution">
+                        <span>Photographer</span>
+                        <br>
+                        <a href="" id="photographer"></a> 
+                    </div>
             </div>
         </div>
         <button id="close_image"></button>
@@ -86,7 +90,7 @@ if(!isset($_SESSION["username"])){
     <br>
     <footer>
         <span>
-            API provided by <a href="https://www.pexels.com/">Pexels.com</a>
+            API provided by <a href="https://www.pexels.com/">Pexels</a>
         </span>
     </footer>
     
@@ -95,4 +99,13 @@ if(!isset($_SESSION["username"])){
 
 <script src="../main.js"></script>
 <script src="../toggleMenu.js"></script>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script> -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js">
+                        $(function(){
+                            $("a.save_to_db").click(function()
+                            {
+                                $.get("../saved_images/save_photo_to_db.php");
+                            });
+                        });
+                    </script>
 </html>

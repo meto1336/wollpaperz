@@ -18,12 +18,30 @@ input[type="text"], input[type="password"] {
     padding-left: 1rem;
 }
 
+button[type="submit"] {
+    color: white;
+    background: black;
+    margin-bottom: 2rem;
+    margin-top: 1rem;
+    width: 16.3rem;
+    height: 2rem;
+    font-size: large;
+    border-radius: 2rem;
+    border: 2px solid black;
+    outline: none;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    transform: scale(1.03);
+}
+
 button {
     color: black;
     background: white;
     margin-bottom: 2rem;
     margin-top: 1rem;
-    width: 16.5rem;
+    width: 13rem;
     height: 2rem;
     font-size: large;
     border-radius: 2rem;
@@ -35,11 +53,15 @@ button {
 button:hover {
     background: black;
     color: white;
-    transition: 0.2s ease-in;
+    transition: 0.s ease-in;
 }
 
 a{ 
     text-decoration: none;
-    text-decoration-color: white;
+    color: black;
+}
+
+button:hover > a{
+    color: white;
 }
 

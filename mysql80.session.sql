@@ -1,1 +1,1 @@
-SELECT * FROM accounts
+SELECT * from images

@@ -9,7 +9,7 @@
     <?php
     if(isset($_POST["submit"])){
       require("mysql.php");
-      $stmt = $mysql->prepare("SELECT * FROM accounts WHERE USERNAME = :user"); //Username überprüfen
+      $stmt = $conn->prepare("SELECT * FROM accounts WHERE USERNAME = :user"); //Username überprüfen
       $stmt->bindParam(":user", $_POST["username"]);
       $stmt->execute();
       $count = $stmt->rowCount();
@@ -18,7 +18,7 @@
         if($count == 0){
           if($_POST["pw"] == $_POST["pw2"]){
             //User anlegen
-            $stmt = $mysql->prepare("INSERT INTO accounts (USERNAME, PASSWORD) VALUES (:user, :pw)");
+            $stmt = $conn->prepare("INSERT INTO accounts (USERNAME, PASSWORD) VALUES (:user, :pw)");
             $stmt->bindParam(":user", $_POST["username"]);
             $hash = password_hash($_POST["pw"], PASSWORD_BCRYPT);
             $stmt->bindParam(":pw", $hash);
@@ -35,7 +35,7 @@
      ?>
     <h1>Register</h1>
     <form action="register.php" method="post">
-      <input type="text" name="username" placeholder="Username" maxlength="10" required><br>
+      <input type="text" name="username" placeholder="Username" minlength="5" maxlength="15" required><br>
       <input type="password" name="pw" placeholder="Password" required><br>
       <input type="password" name="pw2" placeholder="Repeat Password" required><br>
       <button type="submit" name="submit">Create Account</button>

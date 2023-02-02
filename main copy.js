@@ -21,15 +21,9 @@ var popup_image_white_background = document.getElementById('white-background')
 var download_button = document.getElementById('download_button')
 var image_div_container = document.getElementsByClassName('image')
 var photographer = document.getElementById("photographer")
-var save_image = document.getElementById('save_image_button')
 
 
-var page = 1;
 
-
-if(page < 2){
-    backwardsButton.setAttribute('disabled', true);
-}
 
 
 function displayLoading(visibility){
@@ -47,7 +41,12 @@ function displayLoading(visibility){
 
 
 
+var page = 1;
 
+
+if(page < 2){
+    backwardsButton.setAttribute('disabled', true);
+}
 
 var url = 'https://pexelsdimasv1.p.rapidapi.com/v1/curated?per_page=12&page=' + page
 
@@ -178,18 +177,18 @@ function displayImages(data){
                     img_tag[index].style.opacity = 1
                     img_tag[index].style.cursor = 'pointer'
                     displayLoading('hidden')
+                    // img_tag[index].style.pointerEvents = 'auto'
 
 
                 })
                 img_tag[index].addEventListener('click', function(){
+                    img_tag[index].style.pointerEvents = 'none'
                     new_url = data.photos[index].url
                     url_with_numbers = new_url.replace('https://www.pexels.com/photo/', '')
-                    replaced_url = url_with_numbers.slice(0, -9)
+                    replaced_url = url_with_numbers.slice(0, -10)
                     download_image = data.photos[index].src.original
                     // image_container.removeChild('')
-                    img_tag[index].style.pointerEvents = 'none'
                     img_tag[index].src = data.photos[index].src.original
-                    console.log(img_tag[index].src)
                     popup_image_white_background.insertAdjacentElement('afterbegin', img_tag[index])
                     photographer.href = data.photos[index].photographer_url
                     photographer.innerText = data.photos[index].photographer
@@ -209,11 +208,7 @@ function displayImages(data){
                    
                 })
 
-                //createCookie('image_url', image_el.src, 7);
-
-                save_image.addEventListener('click', function(){
-                    createCookie("image_url", download_image, "1")
-                })
+                
                 
                   
                 
@@ -229,34 +224,8 @@ function displayImages(data){
 
 const imgs = document.querySelectorAll('img')
 
-function createCookie(name, value, days) {
-    var expires;
-    if (days) {
-      var date = new Date();
-      date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-      expires = "; expires=" + date.toGMTString();
-    }
-    else {
-      expires = "";
-    }
-    document.cookie = escape(name) + "=" + escape(value) + expires + "; path=/";
-  }
 
 
-//../saved_images/save_photo_to_db.php
-
-function save_photo_to_db(){
-    jQuery(function($) {    
-        $.ajax( {           
-            url : "../saved_images/save_photo_to_db.php",
-            type : "POST",
-            success : function() {
-                alert ("works!"); //or use data string to show something else
-                }
-            });
-        });
-
-}
 
 download_button.addEventListener('click', function(){
     download(download_image, replaced_url)

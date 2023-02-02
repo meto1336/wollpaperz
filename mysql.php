@@ -4,8 +4,8 @@ $name = "wollpaperz";
 $user = "root";
 $passwort = "password";
 try{
-    $conn = new PDO("mysql:host=$host;dbname=$name", $user, $passwort);
-} catch (PDOException $e){
+    $conn = mysqli_connect($host, $user, $passwort, $name);
+} catch (Exception $e){
     echo "SQL Error: ".$e->getMessage();
 }
  ?>
