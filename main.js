@@ -45,7 +45,7 @@ function displayLoading(visibility){
 
 
 
-
+// page = Math.floor(Math.random() * 101)
 
 
 
@@ -182,20 +182,25 @@ function displayImages(data){
 
                 })
                 img_tag[index].addEventListener('click', function(){
+                    //save_image.innerText = "Save Image"
                     new_url = data.photos[index].url
                     url_with_numbers = new_url.replace('https://www.pexels.com/photo/', '')
                     replaced_url = url_with_numbers.slice(0, -9)
                     download_image = data.photos[index].src.original
+                    low_res_image = data.photos[index].src.large2x
                     // image_container.removeChild('')
                     img_tag[index].style.pointerEvents = 'none'
                     img_tag[index].src = data.photos[index].src.original
-                    console.log(img_tag[index].src)
+                    // console.log(img_tag[index].src)
                     popup_image_white_background.insertAdjacentElement('afterbegin', img_tag[index])
                     photographer.href = data.photos[index].photographer_url
                     photographer.innerText = data.photos[index].photographer
                     popup_image.style.visibility = 'visible'
                     document.body.style.overflow = 'hidden'
                     // console.log(currentimg)
+                    console.log(low_res_image)
+                    createCookie("image_url", low_res_image, "1")
+                    check_if_image_is_saved()
                 }),
                 close_image_button.addEventListener('click', function(){
                     // popup_image.removeChild(img_tag[index])
@@ -212,7 +217,9 @@ function displayImages(data){
                 //createCookie('image_url', image_el.src, 7);
 
                 save_image.addEventListener('click', function(){
-                    createCookie("image_url", download_image, "1")
+                    console.log(low_res_image)
+                    createCookie("image_url", low_res_image, "1")
+                    
                 })
                 
                   
@@ -246,16 +253,51 @@ function createCookie(name, value, days) {
 //../saved_images/save_photo_to_db.php
 
 function save_photo_to_db(){
-    jQuery(function($) {    
-        $.ajax( {           
-            url : "../saved_images/save_photo_to_db.php",
-            type : "POST",
-            success : function() {
-                alert ("works!"); //or use data string to show something else
-                }
-            });
-        });
+    
+    var xhr = new XMLHttpRequest()
+    xhr.addEventListener("readystatechange", function() 
+    {
+        if(this.readyState === 4) 
+        {
+            if(this.status==200 || this.status==201)
+            {
+                swal("Photo has been added to your collection", "", "success")
+                save_image.innerText = 'Remove Image'
 
+            }
+            else{
+
+                swal("You already have this photo in your collection", "", "error")
+                //save_image.innerText = 'Save Image'
+
+
+            }
+        }
+    });
+    xhr.open('POST', '../saved_images/save_photo_to_db.php')
+    xhr.send()
+}
+
+
+function check_if_image_is_saved(){
+    
+    var xhr = new XMLHttpRequest()
+    xhr.addEventListener("readystatechange", function() 
+    {
+        if(this.readyState === 4) 
+        {
+            if(this.status==200)
+            {
+                save_image.innerText = 'Save Image'
+
+            } else {
+                save_image.innerText = 'Remove Image'
+
+            }
+        }
+    });
+    xhr.open('POST', '../saved_images/check_if_image_is_saved.php')
+    xhr.send()
 }
 
 download_button.addEventListener('click', function(){

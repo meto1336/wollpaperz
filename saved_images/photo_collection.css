@@ -1,0 +1,45 @@
+
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: 'Poppins', sans-serif;
+}
+
+#image_collection {
+
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    /* justify-items: center; */
+}
+
+
+h1 {
+    margin: 1rem;
+}
+
+.image_container {
+    border-radius: 2rem;
+    overflow: hidden;
+    max-width: 100%;
+    height: 22rem;
+    margin: .7rem;
+
+}
+
+img {
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+
+
+img:hover {
+
+    transform: scale(1.1);
+    transition: 0.2s ease-in;
+}

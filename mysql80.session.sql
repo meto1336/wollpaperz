@@ -1,1 +1,1 @@
-SELECT * from images
+delete from images

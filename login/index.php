@@ -16,7 +16,10 @@ if(!isset($_SESSION["username"])){
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Rubik+Bubbles&family=VT323&display=swap" rel="stylesheet">
-    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+
+
     <title>Discover Wollpaperz</title>
 </head>
 <body>
@@ -48,7 +51,7 @@ if(!isset($_SESSION["username"])){
                     <?php echo $_SESSION["username"];?>
                     </a>
                 <ul>
-                    <li><a id="saved_image" href="">Saved Images</a></li>
+                    <li><a id="saved_image" href="../saved_images/photo_collection.php">Photo Collection</a></li>
                     <li><a id="logout" href="logout.php">Logout</a><li>
                 </ul>  
                 </li>
@@ -76,7 +79,6 @@ if(!isset($_SESSION["username"])){
         </div>
         <button id="close_image"></button>
     </div>
-
     <div class="image-container">
        
     </div>
@@ -100,12 +102,4 @@ if(!isset($_SESSION["username"])){
 <script src="../main.js"></script>
 <script src="../toggleMenu.js"></script>
 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script> -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js">
-                        $(function(){
-                            $("a.save_to_db").click(function()
-                            {
-                                $.get("../saved_images/save_photo_to_db.php");
-                            });
-                        });
-                    </script>
 </html>
