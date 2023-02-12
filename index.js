@@ -28,17 +28,10 @@ var photographer = document.getElementById("photographer")
 
 function displayLoading(visibility){
 
-    // for (let index = 0; index < loader.length; index++) {
-    //     loader[index].classList.add('display')
-    //     console.log(loader[index])
-    // }
 
     loader.style.visibility = visibility
 
 }
-
-
-
 
 
 var page = 1;
@@ -50,11 +43,6 @@ if(page < 2){
 
 var url = 'https://pexelsdimasv1.p.rapidapi.com/v1/curated?per_page=12&page=' + page
 
-// image_container.addEventListener('click', (e)=> {
-
-//     img.appendChild(popup_image)
-
-// })
 
  forwardButton.addEventListener('click', (e)=> {
 

@@ -86,7 +86,6 @@ body {
     width: 4rem;
     height: 4rem;
 
-
 }
 
 
@@ -95,7 +94,7 @@ body {
     transition: 0.1s ease-in;
 }
 .previous_page:disabled {
-    opacity: 60%;
+    background: rgb(105, 105, 105);
     pointer-events: none;
 }
 
