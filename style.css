@@ -62,18 +62,42 @@ body {
     /* display: flex; */
 }
 
-.search-input input{
+#search-input{
 
     width: 40rem;
     height: 7vh;
     font-size: large;
-    border-radius: 20px;
+    border-radius: 10px;
     border: 2px solid rgb(81, 81, 81);
     outline: none;
     padding-left: 1rem;
 
 }
 
+#search_container {
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 6.5%;
+    right: 0;
+    width: 40rem;
+    background-color: white;
+    visibility: hidden;
+    border: 1px solid rgb(162, 162, 162);
+    border-radius: 10px;
+}
+
+.item {
+    padding: 1rem;
+    cursor: pointer;
+    border-radius: 10px;
+    text-align: left;
+}
+
+.item:hover {
+    background-color: gainsboro;
+
+}
 
 .previous_page {
 
