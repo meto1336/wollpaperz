@@ -187,6 +187,7 @@ function fetchImages() {
     fetch(url, get_image_options)
        .then(res => res.json())
        .then(data => this.displayImages(data))
+       .then(error => console.error(error))
 
     }
 
