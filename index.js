@@ -95,6 +95,8 @@ var url = 'https://pexelsdimasv1.p.rapidapi.com/v1/curated?per_page=12&page=' + 
 
 })
 
+let consoleLogged = false;
+
 search_input.addEventListener('keypress', (e)=> {
 
     if(e.key === "Enter"){
@@ -121,38 +123,34 @@ function search_request(){
 }
 
 function search_complete(search_data){
-
-
-    var item = document.querySelectorAll(".item")
+    var item = document.querySelectorAll(".item");
+    // var new_search_input = "";
 
     for (let i = 0; i < item.length; i++) {
-
-        if(search_input.value == ""){
-            item[i].innerHTML = ""
-            search_container.style.visibility = "hidden"
+        if (search_input.value == "") {
+            item[i].innerHTML = "";
+            search_container.style.visibility = "hidden";
         } else {
-            item[i].innerHTML = search_data[i]
+            item[i].innerHTML = search_data[i];
             item[i].addEventListener("click", function(){
-                search_input.value = item[i].innerHTML
-                search_container.style.visibility = "hidden"
-                
-                const keyEvent = new KeyboardEvent("keydown", { key: "Enter"});
-                
-
-            })  
+                search_input.value = item[i].textContent;
+                search_container.style.visibility = "hidden";
+                 // new_search_input += item[i].innerHTML;
+                if (!consoleLogged) {
+                    console.log(search_input.value)
+                    searchImages()
+                    consoleLogged = true;
+                }
+                return false
+            });
         }
-
-       
-    
     }
 
-    
-
-    // item.forEach(item => item.addEventListener("click", function handleclick(){
-        
-    // }))
-
+    consoleLogged = false
 }
+
+
+
 
 function searchImages() {
    
