@@ -22,16 +22,7 @@ input[type="text"], input[type="password"] {
     width: 15rem;
 }
 
-/* input[type="email"]{
-    margin-bottom: 1rem;
-    width: 15rem;
-    height: 2rem;
-    font-size: large;
-    border-radius: 2rem;
-    border: 2px solid black;
-    outline: none;
-    padding-left: 1rem;
-} */
+
 
 button {
     color: black;

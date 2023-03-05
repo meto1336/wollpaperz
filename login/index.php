@@ -39,9 +39,8 @@ if(!isset($_SESSION["username"])){
            </a>
         </div>
         
-        <div class="search-input">
-            <input type="search" name="" placeholder="Search for images">
-        </div>
+        <input type="search" id="search-input"  placeholder="Search for images" oninput="search_request()"/>
+
 
 
         <div class="navbar-links">

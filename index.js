@@ -32,7 +32,7 @@ var image_div_container = document.getElementsByClassName('image')
 var photographer = document.getElementById("photographer")
 var search_container = document.getElementById('search_container')
 var clicked_image = false
-
+var item = document.querySelectorAll(".item");
 
 
 
@@ -95,7 +95,7 @@ var url = 'https://pexelsdimasv1.p.rapidapi.com/v1/curated?per_page=12&page=' + 
 
 })
 
-let consoleLogged = false;
+
 
 search_input.addEventListener('keypress', (e)=> {
 
@@ -108,6 +108,9 @@ search_input.addEventListener('keypress', (e)=> {
     }
 
 })
+
+
+let search_item_clicked = false;
 
 
 function search_request(){
@@ -123,8 +126,6 @@ function search_request(){
 }
 
 function search_complete(search_data){
-    var item = document.querySelectorAll(".item");
-    // var new_search_input = "";
 
     for (let i = 0; i < item.length; i++) {
         if (search_input.value == "") {
@@ -135,19 +136,51 @@ function search_complete(search_data){
             item[i].addEventListener("click", function(){
                 search_input.value = item[i].textContent;
                 search_container.style.visibility = "hidden";
-                 // new_search_input += item[i].innerHTML;
-                if (!consoleLogged) {
+                if (!search_item_clicked) {
                     console.log(search_input.value)
                     searchImages()
-                    consoleLogged = true;
+                    search_item_clicked = true;
                 }
                 return false
             });
+           
+
         }
     }
 
-    consoleLogged = false
+    search_item_clicked = false
 }
+
+let selectedIndex = -1; // current selected index
+
+// listen for arrow key events
+search_input.addEventListener("keydown", (event) => {
+  switch (event.key) {
+    case "ArrowUp":
+      event.preventDefault();
+      // move the selection up by one
+      selectedIndex = Math.max(selectedIndex - 1, 0);
+      break;
+    case "ArrowDown":
+      event.preventDefault();
+      // move the selection down by one
+      selectedIndex = Math.min(selectedIndex + 1, item.length - 1);
+      break;
+    default:
+      return; // exit if it's not an arrow key
+  }
+
+  // update the selection of the li elements
+  for (let i = 0; i < item.length; i++) {
+    const li = item[i];
+    if (i === selectedIndex) {
+      search_input.value = item[i].textContent
+      li.style.background = "gainsboro"
+    } else {
+      li.style.background = "white"
+    }
+  }
+});
 
 
 
@@ -194,6 +227,8 @@ function fetchImages() {
 
 function displayImages(data){
 
+
+    console.log(data);
 
         if(data.photos.length <= 0){
             no_pics.style.display = 'flex'

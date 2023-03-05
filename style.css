@@ -92,6 +92,8 @@ body {
     cursor: pointer;
     border-radius: 10px;
     text-align: left;
+    list-style: none;
+     
 }
 
 .item:hover {

@@ -22,7 +22,7 @@
         }
     
     
-        $select_query = mysqli_query($conn,"SELECT * FROM images WHERE username='$username' AND image_url='$image_url'");
+        $select_query = mysqli_query($conn,"SELECT * FROM images WHERE username='$username' AND image_url='$image_url' AND ");
         $num_rows = mysqli_num_rows($select_query);
         if ($num_rows > 0) {
 

@@ -8,17 +8,17 @@
   <body>
     <?php
     if(isset($_POST["submit"])){
-      require("mysql.php");
-      $stmt = $mysql->prepare("SELECT * FROM accounts WHERE USERNAME = :user"); //Username überprüfen
+      require("../register/mysql.php");
+      $stmt = $conn->prepare("SELECT * FROM accounts WHERE USERNAME = :user"); //Username überprüfen
       $stmt->bindParam(":user", $_POST["username"]);
       $stmt->execute();
       $count = $stmt->rowCount();
       if($count == 1){
         //Username ist frei
         $row = $stmt->fetch();
-        if(password_verify($_POST["pw"], $row["PASSWORD"])){
+        if(password_verify($_POST["pw"], $row["password"])){
           session_start();
-          $_SESSION["username"] = $row["USERNAME"];
+          $_SESSION["username"] = $row["username"];
           header("Location: index.php");
         } else {
           echo "Login failed";
