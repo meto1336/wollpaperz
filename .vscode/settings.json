@@ -8,7 +8,7 @@
             "server": "localhost",
             "port": 3306,
             "driver": "MySQL",
-            "name": "MySQL80",
+            "name": "mysql80",
             "database": "wollpaperz",
             "username": "root",
             "password": "password"

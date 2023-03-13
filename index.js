@@ -7,13 +7,16 @@ const get_image_options = {
 	}
 };
 
-const get_keywords_options = {
-	method: 'GET',
+const get_keyword_suggestions = {
+
+  method: 'GET',
 	headers: {
 		'X-RapidAPI-Key': '9bfff22b92msh34e4d091ac760b4p118c7ajsn42657aa3af80',
 		'X-RapidAPI-Host': 'auto-suggest-queries.p.rapidapi.com'
 	}
-};
+
+}
+
 
 
 var forwardButton = document.querySelector('.next_page');
@@ -103,7 +106,11 @@ search_input.addEventListener('keypress', (e)=> {
         search_container.style.visibility = "hidden"
         page = 1
         page_number.innerHTML = 'Page ' + page
-        searchImages()
+        if(search_input.value == ""){
+            return;
+        } else {
+            searchImages()
+        }
         e.preventDefault()
     }
 
@@ -119,13 +126,21 @@ function search_request(){
     search_container.style.visibility = "visible"
 
 
-    fetch(`https://auto-suggest-queries.p.rapidapi.com/suggestqueries?query=${search_input.value}`, get_keywords_options)
+    fetch(`https://auto-suggest-queries.p.rapidapi.com/suggestqueries?query=${search_input.value}`, get_keyword_suggestions)
     .then(response => response.json())
-	.then(response => search_complete(response))
+	  .then(response => search_complete(response))
 	//.catch(err => console.error(err));
+
+
+
+    
 }
 
 function search_complete(search_data){
+
+    search_item_clicked = false
+    let selectedIndex = -1; // current selected index
+
 
     for (let i = 0; i < item.length; i++) {
         if (search_input.value == "") {
@@ -143,15 +158,21 @@ function search_complete(search_data){
                 }
                 return false
             });
-           
-
+            item[i].addEventListener("mouseover", function() {
+                selectedIndex = i;
+                for (let j = 0; j < item.length; j++) {
+                    if (j === i) {
+                        item[j].style.background = "gainsboro";
+                    } else {
+                        item[j].style.background = "white";
+                    }
+                }
+            });
         }
     }
 
-    search_item_clicked = false
-}
 
-let selectedIndex = -1; // current selected index
+
 
 // listen for arrow key events
 search_input.addEventListener("keydown", (event) => {
@@ -181,6 +202,9 @@ search_input.addEventListener("keydown", (event) => {
     }
   }
 });
+}
+
+
 
 
 
@@ -233,7 +257,8 @@ function displayImages(data){
         if(data.photos.length <= 0){
             no_pics.style.display = 'flex'
             image_container.style.display = 'flex'
-
+            loader.style.visibility = "hidden"
+            forwardButton.setAttribute('disabled', true);
         }
         
         else {

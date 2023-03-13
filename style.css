@@ -67,7 +67,7 @@ body {
     width: 40rem;
     height: 7vh;
     font-size: large;
-    border-radius: 10px;
+    border-radius: 5rem;
     border: 2px solid rgb(81, 81, 81);
     outline: none;
     padding-left: 1rem;
@@ -119,6 +119,7 @@ body {
     transform: scale(1.1);
     transition: 0.1s ease-in;
 }
+
 .previous_page:disabled {
     background: rgb(105, 105, 105);
     pointer-events: none;
@@ -139,6 +140,12 @@ body {
     transform: scale(1.1);
     transition: 0.1s ease-in;
 }
+
+.next_page:disabled {
+    background: rgb(105, 105, 105);
+    pointer-events: none;
+}
+
 
 .page_number {
     font-size: x-large;

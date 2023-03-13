@@ -1,7 +1,8 @@
-create table collection (
+create TABLE accounts(
 
-    id not null auto_increment,
-    name varchar(255),
-    
+    id varchar(100) NOT NULL PRIMARY KEY,
+    username varchar(32) NOT NULL,
+    password varchar(60) NOT NULL
+
 
 )
