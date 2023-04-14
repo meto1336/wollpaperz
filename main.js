@@ -22,7 +22,11 @@ var download_button = document.getElementById('download_button')
 var image_div_container = document.getElementsByClassName('image')
 var photographer = document.getElementById("photographer")
 var save_image = document.getElementById('save_image_button')
-
+var collection_popup = document.getElementById('collection-popup')
+var popup_buttons = document.getElementById('popup-buttons')
+var collection_container = document.getElementById('collection-container-background')
+var collection_window = document.getElementById('collection-window')
+var close_collection = document.getElementById('close-collection')
 
 var page = 1;
 
@@ -34,10 +38,7 @@ if(page < 2){
 
 function displayLoading(visibility){
 
-    // for (let index = 0; index < loader.length; index++) {
-    //     loader[index].classList.add('display')
-    //     console.log(loader[index])
-    // }
+
 
     loader.style.visibility = visibility
 
@@ -45,17 +46,12 @@ function displayLoading(visibility){
 
 
 
-// page = Math.floor(Math.random() * 101)
 
 
 
 var url = 'https://pexelsdimasv1.p.rapidapi.com/v1/curated?per_page=12&page=' + page
 
-// image_container.addEventListener('click', (e)=> {
 
-//     img.appendChild(popup_image)
-
-// })
 
  forwardButton.addEventListener('click', (e)=> {
 
@@ -198,7 +194,7 @@ function displayImages(data){
                     popup_image.style.visibility = 'visible'
                     document.body.style.overflow = 'hidden'
                     // console.log(currentimg)
-                    console.log(low_res_image)
+                    // console.log(low_res_image)
                     createCookie("image_url", low_res_image, "1")
                     check_if_image_is_saved()
                 }),
@@ -217,7 +213,7 @@ function displayImages(data){
                 //createCookie('image_url', image_el.src, 7);
 
                 save_image.addEventListener('click', function(){
-                    console.log(low_res_image)
+                    // console.log(low_res_image)
                     createCookie("image_url", low_res_image, "1")
                     
                 })
@@ -254,29 +250,17 @@ function createCookie(name, value, days) {
 
 function save_photo_to_db(){
     
-    var xhr = new XMLHttpRequest()
-    xhr.addEventListener("readystatechange", function() 
-    {
-        if(this.readyState === 4) 
-        {
-            if(this.status==200 || this.status==201)
-            {
-                swal("Photo has been added to your collection", "", "success")
-                save_image.innerText = 'Remove Image'
+    popup_image.insertAdjacentElement('afterbegin', collection_container)
+    collection_container.style.visibility = "visible"
+    close_image_button.style.visibility = "hidden"
 
-            }
-            else{
-
-                swal("You already have this photo in your collection", "", "error")
-                //save_image.innerText = 'Save Image'
-
-
-            }
-        }
-    });
-    xhr.open('POST', '../saved_images/save_photo_to_db.php')
-    xhr.send()
 }
+
+close_collection.addEventListener('click', function(){
+    collection_container.style.visibility = "hidden"
+    close_image_button.style.visibility = "visible"
+})
+
 
 
 function check_if_image_is_saved(){
@@ -288,7 +272,7 @@ function check_if_image_is_saved(){
         {
             if(this.status==200)
             {
-                save_image.innerText = 'Save Image'
+                save_image.innerText = 'Save'
 
             } else {
                 save_image.innerText = 'Remove Image'

@@ -9,8 +9,11 @@
     <?php
     if(isset($_POST["submit"])){
       require("../register/mysql.php");
+
+      $user = $_POST["username"]; 
+
       $stmt = $conn->prepare("SELECT * FROM accounts WHERE USERNAME = :user"); //Username überprüfen
-      $stmt->bindParam(":user", $_POST["username"]);
+      $stmt->bindParam(":user", $user);
       $stmt->execute();
       $count = $stmt->rowCount();
       if($count == 1){

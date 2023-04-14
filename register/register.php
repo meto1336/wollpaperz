@@ -17,16 +17,17 @@
 
 
    if(isset($_POST["submit"])){
-    require("../mysql.php"); // assuming this file contains database connection settings
+    require("../mysql.php");
     
     $user = $_POST["username"];
 
-    // Prepare and execute SELECT query
+   // Prepare and execute SELECT query
     $stmt = $conn->prepare("SELECT * FROM accounts WHERE USERNAME = ?");
-    $stmt->execute([$user]);
-    $result = $stmt->fetchAll();
+    $stmt->bind_param("s", $user);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
-    $count = count($result);
+    $count = ($result->num_rows > 0) ? mysqli_num_fields($result) : 0;
     if($count == 0){
         if($_POST["pw"] == $_POST["pw2"]){
             // User anlegen

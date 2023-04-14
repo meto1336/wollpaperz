@@ -50,7 +50,7 @@ if(!isset($_SESSION["username"])){
                     <?php echo $_SESSION["username"];?>
                     </a>
                 <ul>
-                    <li><a id="saved_image" href="../saved_images/photo_collection.php">Photo Collection</a></li>
+                    <li><a id="saved_image" href="../saved_images/photo_collection.php">Collection</a></li>
                     <li><a id="logout" href="logout.php">Logout</a><li>
                 </ul>  
                 </li>
@@ -64,11 +64,11 @@ if(!isset($_SESSION["username"])){
 
     <div id="popup-image">
         <div id="white-background">
-            <div class="pop-buttons">
+            <div id="popup-buttons">
                     <button id="download_button">
                         Download
                     </button>    
-                    <a href="#" onclick="save_photo_to_db()"><button id="save_image_button">Save Image</button></a>
+                    <a href="#" onclick="save_photo_to_db()"><button id="save_image_button">Save</button></a>
                     <div class="attribution">
                         <span>Photographer</span>
                         <br>
@@ -78,6 +78,47 @@ if(!isset($_SESSION["username"])){
         </div>
         <button id="close_image"></button>
     </div>
+
+    <div id="collection-container-background">
+        <div id="collection-window">
+            <span id="collection-text">Add photo to collection</span>
+        <div id="collection">
+            <div class="collections">
+                New collection
+            </div>
+            <div class="collections">
+                New collection
+            </div>
+            <div class="collections">
+                New collection
+            </div>
+            <div class="collections">
+                New collection
+            </div>
+            <div class="collections">
+                New collection
+            </div>
+            <div class="collections">
+                New collection
+            </div>
+            <div class="collections">
+                New collection
+            </div>
+            <div class="collections">
+                New collection
+            </div>
+            <div class="collections">
+                New collection
+            </div>
+
+            </div>
+            
+        </div>
+        <button id="close-collection"></button>
+    </div>
+
+   
+
     <div class="image-container">
        
     </div>

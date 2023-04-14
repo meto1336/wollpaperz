@@ -35,7 +35,7 @@ var image_div_container = document.getElementsByClassName('image')
 var photographer = document.getElementById("photographer")
 var search_container = document.getElementById('search_container')
 var clicked_image = false
-var item = document.querySelectorAll(".item");
+var item = document.querySelectorAll(".item")
 
 
 
@@ -48,56 +48,69 @@ function displayLoading(visibility){
 
 
 var page = 1;
+previous_page = 0;
 
 
 if(page < 2){
     backwardsButton.setAttribute('disabled', true);
 }
 
-var url = 'https://pexelsdimasv1.p.rapidapi.com/v1/curated?per_page=12&page=' + page
 
+var curated_url = `https://pexelsdimasv1.p.rapidapi.com/v1/curated?per_page=12&page=${page}`;
 
- forwardButton.addEventListener('click', (e)=> {
+var current_url = curated_url;
 
-     url = url.slice(0, -1)
-     page = page += 1
-     page_number.innerHTML = 'Page ' + page
-     url = url + page
-     backwardsButton.removeAttribute('disabled')
+fetchImages(current_url)
 
-     while (image_container.firstChild) {
-         image_container.removeChild(image_container.lastChild);
-        }
+forwardButton.addEventListener('click', (e) => {
+    current_url = current_url.slice(0, -1);
+    previous_page = previous_page + 1;
+    console.log(previous_page);
+    page++;
+    page_number.innerHTML = 'Page ' + page;
+    if(current_url.includes('curated')){
+        current_url = `https://pexelsdimasv1.p.rapidapi.com/v1/curated?per_page=12&page=${page}`;
+    } else {
+        current_url = `https://pexelsdimasv1.p.rapidapi.com/v1/search?query=${search_input.value}&per_page=12&page=${page}`
+    }
+    backwardsButton.removeAttribute('disabled');
+
+    while (image_container.firstChild) {
+        image_container.removeChild(image_container.lastChild);
+    }
+    
+    fetchImages(current_url);
+    window.scrollTo(0, 0);
+    // displayLoading()
+})
+
+backwardsButton.addEventListener('click', (e)=> {
+    
+    current_url = current_url.slice(0, -1)
+    previous_page = previous_page - 1;
+    page--
+    page_number.innerHTML = 'Page ' + page
+    if(current_url.includes('curated')){
+        current_url = `https://pexelsdimasv1.p.rapidapi.com/v1/curated?per_page=12&page=${page}`;
+    } else {
+        current_url = `https://pexelsdimasv1.p.rapidapi.com/v1/search?query=${search_input.value}&per_page=12&page=${page}`
+    }
+    
+    while (image_container.firstChild) {
+        image_container.removeChild(image_container.lastChild);
+    }
+    
+    fetchImages(current_url)
+    
+    window.scrollTo(0, 0);
+    
+    if(page < 2)    {
+        backwardsButton.setAttribute('disabled', true);
         
-        fetchImages(url)
-        window.scrollTo(0, 0);
-        // displayLoading()
-
-
- })
-
- backwardsButton.addEventListener('click', (e)=> {
-
-        url = url.slice(0, -1)
-        page = page -= 1
-        page_number.innerHTML = 'Page ' + page
-        url = url + page
-        while (image_container.firstChild) {
-            image_container.removeChild(image_container.lastChild);
-          }
-        
-        fetchImages(url)
-
-        window.scrollTo(0, 0);
-
-        if(page < 2)    {
-            backwardsButton.setAttribute('disabled', true);
-            
-        }
+    }
 
 
 })
-
 
 
 search_input.addEventListener('keypress', (e)=> {
@@ -116,6 +129,39 @@ search_input.addEventListener('keypress', (e)=> {
 
 })
 
+function searchImages() {
+    if (no_pics.style.display.includes('flex')) {
+        no_pics.style.display = 'none';
+    }
+
+    if (image_container.style.display.includes('flex')) {
+        image_container.style.display = 'grid';
+    }
+
+    var search_url = `https://pexelsdimasv1.p.rapidapi.com/v1/search?query=${search_input.value}&per_page=12&page=${page}`
+
+    current_url = search_url;
+
+    console.log(search_url)
+
+    while (image_container.firstChild) {
+        image_container.removeChild(image_container.lastChild);
+    }
+    
+    loader.style.visibility = 'visible';
+    fetchImages(current_url);
+    return current_url;
+}
+
+function fetchImages(url) {
+    displayLoading('visible');
+    fetch(url, get_image_options)
+        .then((res) => res.json())
+        .then((data) => this.displayImages(data))
+        // .then(error => console.error(error))
+    return url;
+}
+
 
 let search_item_clicked = false;
 
@@ -130,8 +176,6 @@ function search_request(){
     .then(response => response.json())
 	  .then(response => search_complete(response))
 	//.catch(err => console.error(err));
-
-
 
     
 }
@@ -209,44 +253,7 @@ search_input.addEventListener("keydown", (event) => {
 
 
 
-function searchImages() {
-   
 
-
-        if (no_pics.style.display.includes('flex')) {
-            no_pics.style.display = 'none';
-        }
-
-
-        if (image_container.style.display.includes('flex')) {
-            image_container.style.display = 'grid';
-
-        }
-
-        this.url = 'https:exelsdimasv1.p.rapidapi.com/v1/search?query=' + search_input.value + '&per_page=12&page=' + page;
-
-
-
-        console.log(url)
-
-        while (image_container.firstChild) {
-            image_container.removeChild(image_container.lastChild);
-        }
-        loader.style.visibility = 'visible';
-        fetchImages(url);
-
-
-}
-
-
-function fetchImages() {
-    displayLoading("visible")
-    fetch(url, get_image_options)
-       .then(res => res.json())
-       .then(data => this.displayImages(data))
-       .then(error => console.error(error))
-
-    }
 
 
 function displayImages(data){
@@ -259,9 +266,15 @@ function displayImages(data){
             image_container.style.display = 'flex'
             loader.style.visibility = "hidden"
             forwardButton.setAttribute('disabled', true);
+            page = previous_page + 1
+            //url = 'https:exelsdimasv1.p.rapidapi.com/v1/search?query=' + search_input.value + '&per_page=12&page=' + page;
         }
         
         else {
+
+            no_pics.style.display = "none"
+
+            forwardButton.removeAttribute('disabled')
 
             if(data.photos.length <= 5) {
                 image_container.style.display = 'flex'
