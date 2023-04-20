@@ -86,31 +86,16 @@ if(!isset($_SESSION["username"])){
             <div class="collections">
                 New collection
             </div>
-            <div class="collections">
-                New collection
-            </div>
-            <div class="collections">
-                New collection
-            </div>
-            <div class="collections">
-                New collection
-            </div>
-            <div class="collections">
-                New collection
-            </div>
-            <div class="collections">
-                New collection
-            </div>
-            <div class="collections">
-                New collection
-            </div>
-            <div class="collections">
-                New collection
-            </div>
-            <div class="collections">
-                New collection
-            </div>
 
+            <div class="collections">
+                New collection
+            </div>
+            <div class="collections">
+                New collection
+            </div>
+            <div class="collections">
+                New collection
+            </div>
             </div>
             
         </div>
