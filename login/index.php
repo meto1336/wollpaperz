@@ -84,19 +84,25 @@ if(!isset($_SESSION["username"])){
             <span id="collection-text">Add photo to collection</span>
         <div id="collection">
             <div class="collections">
-                New collection
-            </div>
+                <div id="add_collection">
 
-            <div class="collections">
-                New collection
+                </div>
             </div>
             <div class="collections">
-                New collection
+                <div id="add_collection">
+                    
+                </div>
             </div>
             <div class="collections">
-                New collection
+                <div id="add_collection">
+                    
+                </div>
+            </div><div class="collections">
+                <div id="add_collection">
+                    
+                </div>
             </div>
-            </div>
+        </div>
             
         </div>
         <button id="close-collection"></button>
