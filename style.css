@@ -246,9 +246,8 @@ img:hover {
     position: fixed;
     background-color: rgba(255, 255, 255);
     height: 70%;
-    width: 40%;
+    width: 45%;
     border-radius: 1rem;
-    padding-bottom: 2rem;
 }
 
 #collection-text {
@@ -274,16 +273,26 @@ img:hover {
     width: 10rem;
     height: 17rem;
     border: 2px dotted black;
-    margin-bottom: 1rem;
-    margin-top: 1rem;
+    margin: 1rem;
     border-radius: 1rem;
     cursor: pointer;
+    overflow: hidden;
 }
 
 .collections:hover {
     transform: scale(1.02);
     transition: 0.2s ease-in;
 
+}
+
+
+.add_collection {
+    background: url("pngs/plus.png");
+    cursor: pointer;
+    width: 1.5rem;
+    height: 1.5rem;
+    background-size: 100%;
+    border: none;
 }
 
 #popup-image {
@@ -341,16 +350,7 @@ img:hover {
     border: none;
 }
 
-#add_collection {
-    position: absolute;
-    background: url("pngs/plus.png");
-    cursor: pointer;
-    width: 1.5rem;
-    height: 1.5rem;
-    background-size: 100%;
-    border: none;
-    overflow: hidden;
-}
+
 
 #close-collection:hover {
     transform: scale(1.1);
