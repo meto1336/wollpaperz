@@ -81,16 +81,34 @@ if(!isset($_SESSION["username"])){
 
     <div id="collection-container-background">
         <div id="collection-window">
-            <span id="collection-text">Add photo to collection</span>
-        <div id="collection">
-            <div class="collections">
-                <div class="add_collection">
 
+            <div id="first-collection-page">
+                <span id="collection-text">Add photo to collection</span>
+                <div id="collection">
+                    <div id="collections">
+                        <div id="add-collection"></div>
+                    </div>
+                </div>
+            
+            </div>
+            
+            
+            <div id="next-collection-page">
+                <span id="collection-title">Collection Title</span>
+                <input type="text" name="" id="collection-input" placeholder="Collection title...">
+                <div id="collection-buttons">
+                    <button id="collection-back">Back</button>
+                    <button id="collection-add">Add</button>    
                 </div>
             </div>
-        </div>
+            
+            
             
         </div>
+
+        
+            
+        
         <button id="close-collection"></button>
     </div>
 

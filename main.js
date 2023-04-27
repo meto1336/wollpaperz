@@ -27,6 +27,13 @@ var popup_buttons = document.getElementById('popup-buttons')
 var collection_container = document.getElementById('collection-container-background')
 var collection_window = document.getElementById('collection-window')
 var close_collection = document.getElementById('close-collection')
+var first_collection_page = document.getElementById('first-collection-page')
+var next_collection_page = document.getElementById('next-collection-page')
+var collection = document.getElementById('collection')
+var collections = document.getElementById('collections')
+var add_collection = document.getElementById('add_collection')
+var collection_back = document.getElementById('collection-back')
+var collection_add = document.getElementById('collection-add')
 
 var page = 1;
 
@@ -262,6 +269,24 @@ close_collection.addEventListener('click', function(){
 })
 
 
+collections.addEventListener('click', function(){
+
+    first_collection_page.style.display = "none"
+    next_collection_page.style.display = "flex"
+    collection_window.style.height = "40%"
+    collection_window.style.width  = "35%"
+    close_collection.style.visibility = "hidden"
+
+})
+
+collection_back.addEventListener('click', function(){
+    first_collection_page.style.display = "flex"
+    next_collection_page.style.display = "none"
+    collection_window.style.height = "70%"
+    collection_window.style.width  = "45%"
+    close_collection.style.visibility = "visible"
+
+})
 
 function check_if_image_is_saved(){
     
