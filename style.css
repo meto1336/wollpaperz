@@ -311,7 +311,7 @@ img:hover {
     font-size: xx-large;
     font-weight: bold;
     color: #4b4b4b;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
 }
 
 #collection-input {
@@ -340,6 +340,13 @@ img:hover {
     
     Background-image: linear-gradient(140deg, blue, rgb(190, 2, 190));
     color: white;
+
+}
+
+#collection-add:disabled {
+
+    opacity: 70%;
+    pointer-events: none;
 
 }
 

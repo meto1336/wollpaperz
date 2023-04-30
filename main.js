@@ -34,6 +34,7 @@ var collections = document.getElementById('collections')
 var add_collection = document.getElementById('add_collection')
 var collection_back = document.getElementById('collection-back')
 var collection_add = document.getElementById('collection-add')
+var collection_input = document.getElementById('collection-input')
 
 var page = 1;
 
@@ -273,7 +274,7 @@ collections.addEventListener('click', function(){
 
     first_collection_page.style.display = "none"
     next_collection_page.style.display = "flex"
-    collection_window.style.height = "40%"
+    collection_window.style.height = "45%"
     collection_window.style.width  = "35%"
     close_collection.style.visibility = "hidden"
 
@@ -286,6 +287,19 @@ collection_back.addEventListener('click', function(){
     collection_window.style.width  = "45%"
     close_collection.style.visibility = "visible"
 
+})
+
+collection_input.addEventListener('input', function(){
+    
+    if(collection_input.value.length === 0){
+        collection_add.setAttribute('disabled', true)
+    } else {
+        collection_add.removeAttribute('disabled')
+    }
+})
+
+collection_add.addEventListener('click', function(){
+    
 })
 
 function check_if_image_is_saved(){

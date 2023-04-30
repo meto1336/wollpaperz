@@ -22,19 +22,19 @@
     $user = $_POST["username"];
 
    // Prepare and execute SELECT query
-    $stmt = $conn->prepare("SELECT * FROM accounts WHERE USERNAME = ?");
+    $stmt = $conn->prepare("SELECT * FROM accounts WHERE username = ?");
     $stmt->bind_param("s", $user);
     $stmt->execute();
     $result = $stmt->get_result();
 
     $count = ($result->num_rows > 0) ? mysqli_num_fields($result) : 0;
     if($count == 0){
-        if($_POST["pw"] == $_POST["pw2"]){
+        if($_POST["pw"] == $_POST["rpw"]){
             // User anlegen
             $pw = password_hash($_POST["pw"], PASSWORD_BCRYPT);
-            $stmt = $conn->prepare("INSERT INTO accounts (id, USERNAME, PASSWORD) VALUES (?, ?, ?)");
-            $id = generateUuid();
-            $stmt->execute([$id, $user, $pw]);
+            $stmt = $conn->prepare("INSERT INTO accounts (accountID, username, password) VALUES (?, ?, ?)");
+            $accountID = generateUuid();
+            $stmt->execute([$accountID, $user, $pw]);
             header("location: registered.html");
         } else {
             echo "<h2>The password fields do not match</h2>";
@@ -51,7 +51,7 @@
     <form action="register.php" method="post">
       <input type="text" name="username" placeholder="Username" minlength="5" maxlength="15" required><br>
       <input type="password" name="pw" placeholder="Password" required><br>
-      <input type="password" name="pw2" placeholder="Repeat Password" required><br>
+      <input type="password" name="rpw" placeholder="Repeat Password" required><br>
       <button type="submit" name="submit">Create Account</button>
     </form>
     <br>

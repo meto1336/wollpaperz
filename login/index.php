@@ -98,7 +98,7 @@ if(!isset($_SESSION["username"])){
                 <input type="text" name="" id="collection-input" placeholder="Collection title...">
                 <div id="collection-buttons">
                     <button id="collection-back">Back</button>
-                    <button id="collection-add">Add</button>    
+                    <button id="collection-add" disabled >Add</button>    
                 </div>
             </div>
             
